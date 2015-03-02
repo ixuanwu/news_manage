@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rightbar</title>
+<link href="./public/css/frontcss/rightbar.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./public/js/frontjs/rightbar.js"></script>
+</head>
+<body>
+	<div class="rightbar_page_div">
+		<div class="rightbar_item_div">
+			<div class="rightbar_hr_div"><hr size="3" color="#666666"></div>
+			<div class="rightbar_logo_div">
+				<img src="./public/img/frontimg/jrhtLogo.png" width="140px" height="40px">
+			</div>
+			<div class="rightbar_topline_div">
+				<div class="rightbar_topline_title_div">
+					<a href="index.php?mod=article&act=detail&articleid={$todayhotnews[0].article_id}&columnid={$todayhotnews[0].column_id}">{mb_substr($todayhotnews[0].article_title, 0, 12, 'utf-8')}</a>
+				</div>
+				<div class="rightbar_topline_image_div">
+					<a href="index.php?mod=article&act=detail&articleid={$todayhotnews[0].article_id}&columnid={$todayhotnews[0].column_id}"><img src="{$todayhotnews[0].article_picture}" width="120px" height="90px"></a>
+				</div>
+				<div class="rightbar_topline_intro_div">{mb_substr($todayhotnews[0].article_introduction, 0, 24, 'utf-8')}</div>
+			</div>
+			<div class="rightbar_list_div">
+				{section loop=$todayhotnews name=i start=1 }
+				<a href="index.php?mod=article&act=detail&articleid={$todayhotnews[i].article_id}&columnid={$todayhotnews[i].column_id}">{mb_substr($todayhotnews[i].article_title, 0, 18, 'utf-8')}</a><br><br>
+				{/section}
+			</div>
+		</div>
+		<div class="rightbar_item_div">
+			<div class="rightbar_hr_div"><hr size="3" color="#666666"></div>
+			<div class="rightbar_logo_div">
+				<img src="./public/img/frontimg/jrhtLogo.png" width="140px" height="40px">
+			</div>
+			<div class="rightbar_topline_div">
+				<div class="rightbar_topline_title_div">
+					<a href="index.php?mod=article&act=detail&articleid={$commenthotnews[0].article_id}&columnid={$commenthotnews[0].column_id}">{mb_substr($commenthotnews[0].article_title, 0, 10, 'utf-8')}</a>
+				</div>
+				<div class="rightbar_topline_image_div">
+					<a href="index.php?mod=article&act=detail&articleid={$commenthotnews[0].article_id}&columnid={$commenthotnews[0].column_id}"><img src="{$todayhotnews[0].article_picture}" width="120px" height="90px"></a>
+				</div>
+				<div class="rightbar_topline_intro_div">{mb_substr($commenthotnews[0].article_introduction, 0, 24, 'utf-8')}</div>
+			</div>
+			<div class="rightbar_list_div">
+				{section loop=$commenthotnews name=i start=1}
+				<a href="index.php?mod=article&act=detail&articleid={$commenthotnews[i].article_id}&columnid={$commenthotnews[i].column_id}">{mb_substr($commenthotnews[i].article_title, 0, 18, 'utf-8')}</a><br><br>
+				{/section}
+			</div>
+		</div>
+		<div class="rightbar_adv_div">
+		</div>
+	</div>
+</body>
+</html>

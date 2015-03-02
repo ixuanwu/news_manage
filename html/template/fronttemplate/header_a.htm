@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>head</title>
+<script type="text/javascript" src="./public/js/frontjs/header.js"></script>
+<script type="text/javascript" src="./public/js/search.js"></script>
+<script type="text/javascript" src="./public/js/localtime.js"></script>
+<link href="./public/css/frontcss/header.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/page.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="./public/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="./public/js/checkjs/userlogin.js"></script>
+<script type="text/javascript" src="./public/js/checkjs/adduser.js"></script>
+<script type="text/javascript" src="./public/js/alertify.js"></script>
+<link href="./public/css/alertify.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="./favicon.ico" />
+<script>
+$(function(){
+	document.onkeydown = function(e){ 
+		var ev = document.all ? window.event : e;
+		if(ev.keyCode==13) {
+		
+			if($(".loginregist_div").css("display")=="block"){
+				
+				if($("#login_panel").css("display")=="block"){
+					$("#login-btn").click();
+				}
+				if($("#regist_panel").css("display")=="block"){
+					$("#addur-btn").click();
+				}
+			}else{
+				if($("#search_input").is(":focus")){
+				$("#search").focus();
+				$("#search").click();
+				}
+			}
+		 }
+	}
+});
+</script>
+</head>
+<body>
+	<div class="shade_div"></div>
+	<div class="loginregist_div">
+		<a href="#">
+			<div id="login_control_div" class="loginregist_control_hover_div">登&nbsp;&nbsp;陆</div>
+		</a>
+		<a href="#">
+			<div id="regist_control_div" class="loginregist_control_div">注&nbsp;&nbsp;册</div>
+		</a>
+		<div class="loginregist_close_div">
+			<a href="#">
+				<img src="./public/img/frontimg/closeicon.png" width="20px" height="20px">
+			</a>
+		</div>
+		<div id="login_panel" class="loginregist_panel_div">
+			<form>
+				<div class="login_form_div">
+					<div class="login_username_div">
+						用户名：
+						<span class="loginregist_errortip_span"  id="tips-lusername"></span>
+						<br><input type="text" class="loginregist_input" id="lusername" />
+					</div>
+					<div class="login_password_div">
+						密码：
+						<span class="loginregist_errortip_span" id="tips-lpassword"></span>
+						<br><input type="password" class="loginregist_input"  id="lpassword" />
+					</div>
+					<div class="login_secucodeinput_div">
+						验证码：
+						<span class="loginregist_errortip_span" id="tips-lcode"></span>
+						<br><input type="text" class="loginregist_input" id="lcode" />
+					</div>
+					<div class="login_secucode_div">
+						<a href="#"><img src="./public/code_num.php" width="80px" height="35px" id="code_image"></a>
+						看不清?<a href="#" id="acode_image">换一张</a>
+					</div>
+					<a href=""><div class="loginregist_button_div" id="login-btn">登陆</div></a>
+				</div>
+			</form>
+		</div>
+		<div id="regist_panel" class="loginregist_panel_div">
+			<form>
+				<div class="login_form_div">
+					<div class="login_username_div">
+						用户名：
+						<span class="loginregist_errortip_span" id="tips-ausername"></span>
+						<br><input type="text" class="loginregist_input" id="ausername" onblur="checkName()" />
+					</div>
+					<div class="login_password_div">
+						密码：
+						<span class="loginregist_errortip_span" id="tips-apassword"></span>
+						<br><input type="password" class="loginregist_input" id="apassword" onblur="checkPassw()" />
+					</div>
+					<div class="login_secucodeinput_div">
+						确认密码：
+						<span class="loginregist_errortip_span" id="tips-arepassw"></span>
+						<br><input type="password" class="loginregist_input" id="arepassw" onblur="checkRepassw()" />
+					</div>
+					<div class="regist_mail_div">
+						邮箱：
+						<span class="loginregist_errortip_span" id="tips-aemail"></span>
+						<br><input type="text" class="loginregist_input" id="aemail" onblur="checkEmail()" />
+					</div>
+					<a href=""><div class="loginregist_button_div" id="addur-btn">注册</div></a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="head_page_div">
+	<div class="page_div">
+		<div class="top_div">
+			<div class="time_div" id="Timer"></div>
+			<div class="welcome_div">
+				{if $temp == 0}
+				<a id="login_btn" href="#">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a id="regist_btn" href="#">注册</a>
+				{else}
+				{$userid},欢迎你&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href='{$person_cent}'>个人中心</a>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="{$logout}">退出登录</a>
+				{/if}
+			</div>
+		</div>
+	</div>
+	<div class="head_hr"><hr size="1"/></div>
+	<div class="page_div">
+		<div class="banner_a_div">
+			<a href="index.php?mod=article&act=index">
+				<div class="banner_item_normal">
+					<div class="banner_text">首页</div>
+				</div>
+			</a>
+			{foreach from=$columninfo item=column}
+			<a href="index.php?mod=article&act=column&columnpid={$column.column_id}&columnname={$column.column_name}">
+				<div class="banner_item_normal">
+					<div class="banner_text">{$column.column_name}</div>
+				</div>
+			</a>
+			{/foreach}
+		</div>
+		<div class="head_advertise">
+			<a href="#"><img src="./public/img/frontimg/head_advertise.jpg"></a>
+		</div>
+		<div class="head_search_div">
+			<a id="search" href="#"><div class="search_button_div">搜索</div></a>
+			<div class="search_input_div">
+				<form id="search_form" action="" method="post" onsubmit="return false">
+					<input id="search_input" type="text" size="20"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

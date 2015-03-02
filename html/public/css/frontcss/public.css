@@ -1,0 +1,184 @@
+﻿a:link {
+	color:black;
+	text-decoration:none;
+}
+
+a:visited {
+	color:black;
+	text-decoration:none;
+}
+
+a:hover {
+	color:red;
+	text-decoration:none;
+}
+
+.login_secucode_div a:link {
+	color: #3399FF;
+}
+
+.login_secucode_div a:visited {
+	color: #3399FF;
+}
+
+.login_secucode_div a:hover {
+	color: red;
+}
+
+.page_div {
+	width: 1000px;
+	margin: 0 auto;
+	font-family: "宋体";
+}
+
+.shade_div {
+	background-color: black;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9998;
+	display: none;
+	opacity: 0.7;
+	filter:alpha(opacity=70);  
+	-moz-opacity:0.7;  
+	-khtml-opacity: 0.7;  
+}
+
+.loginregist_div {
+	background-color: white;
+	position: absolute;
+	top: 130px;
+	left: 50%;
+	width: 340px;
+	height: 340px;
+	margin-left: -135px;
+	z-index: 9999;
+	display: none;
+	color: #3399FF;
+	font-size: 13px;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #3399FF;
+}
+
+.loginregist_div .loginregist_control_div {
+	background-color: #FFFFFF;
+	width: 97px;
+	height: 24px;
+	color: #3399FF;
+	font-size: 13px;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	border-color: #3399FF;
+	padding-top: 6px;
+	padding-left: 53px;
+	float: left;
+}
+
+.loginregist_div .loginregist_control_hover_div {
+	background-color: #3399FF;
+	width: 97px;
+	height: 24px;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	border-color: #3399FF;
+	padding-top: 6px;
+	padding-left: 53px;
+	float: left;
+}
+
+.loginregist_div .loginregist_close_div {
+	width: 20px;
+	height: 20px;
+	float: right;
+}
+
+.loginregist_div .loginregist_panel_div {
+	width: 340px;
+	height: 240px;
+	display: none;
+	float: left;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .login_username_div {
+	position: absolute;
+	top: 35px;
+	left: 30px;
+	width: 280px;
+	height: 26px;
+	line-height: 30px;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .login_password_div{
+	position: absolute;
+	top: 95px;
+	left: 30px;
+	width: 280px;
+	height: 26px;
+	line-height: 30px;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .login_secucodeinput_div{
+	position: absolute;
+	top: 155px;
+	left: 30px;
+	width: 280px;
+	height: 26px;
+	line-height: 30px;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .regist_mail_div{
+	position: absolute;
+	top: 215px;
+	left: 30px;
+	width: 280px;
+	height: 26px;
+	line-height: 30px;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .login_secucode_div{
+	position: absolute;
+	top: 230px;
+	left: 30px;
+	width: 200px;
+	height: 35px;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .login_remember_div{
+	position: absolute;
+	top: 250px;
+	left: 230px;
+	width: 200px;
+	height: 35px;
+}
+
+.loginregist_div .loginregist_panel_div .login_form_div .loginregist_button_div{
+	position: absolute;
+	top: 290px;
+	left: 120px;
+	width: 63px;
+	height: 25px;
+	color: white;
+	padding-top: 8px;
+	padding-left: 37px;
+	border-radius: 5px;
+	background-color: #3399FF;
+}
+
+.loginregist_input {
+	width: 270px;
+	height: 20px;
+}
+
+.loginregist_errortip_span {
+	text-decoration: right;
+	color: red;
+	float:right
+}

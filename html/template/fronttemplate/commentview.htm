@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="new-Type" content="text/html; charset=UTF-8">
+<title>newview</title>
+<script type="text/javascript" src="http://misc.erp.valsun.cn/js/jquery-1.8.3.min.js"></script>
+<link href="./public/css/frontcss/public.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/newview.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/commentview.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//赞和取消赞操作
+	function iagree(){
+		if('{$smarty.session.USER_NAME}' == ''){
+			 $("#login_btn").click();
+			 return false;
+		}
+		var id = $(this).attr("id");
+		var comid = id.split("_")[1];
+		var dislikeid = "#dislike_"+comid;
+		if ($(dislikeid).attr("dislike") == 1) {
+			//处于踩状态不能赞
+			return;
+		}
+		var islike = $(this).attr("like");
+		url = "index.php?mod=agree&act=";
+		url +=(islike=="0")?"likeadd":"likedec";
+		$.post(url,{
+			"commentId": comid,
+		},
+		function(data){
+			if ($.trim(data) == "ok") {
+				  var trId			= "#like_" + comid;
+				  var str = $(trId).html();
+				  str = str.split("（")[1];
+				  str = str.split("）")[0];
+				  var likenum	= parseInt(str);
+				  likenum			= (islike=="0")?(likenum+1):(likenum-1);
+				  msg				= (islike=="0")?"取消赞":"点赞";
+				  islike				= (islike=="0")?"1":"0";
+				  $("#"+id).attr("like",islike);
+				  $("#"+id).html("<img src='./public/img/frontimg/1.jpg' width='20px' height='20px'>"+msg+"（"+likenum+"）");
+			  }else {
+				  alert("操作超时");
+			}
+		});
+	}
+	//踩和取消踩操作
+	function idisagree(){
+		if('{$smarty.session.USER_NAME}' == ''){
+			 $("#login_btn").click();
+			 return false;
+		}
+		var id = $(this).attr("id");
+		var comid = id.split("_")[1];
+		var likeid = "#like_"+comid;
+		if ($(likeid).attr("like") == 1) {
+			//处于赞状态不能踩
+			return;
+		}
+		var isdislike = $(this).attr("dislike");
+		url = "index.php?mod=agree&act=";
+		url +=(isdislike=="0")?"dislikeadd":"dislikedec";
+		$.post(url,{
+			"commentId": comid,
+		},
+		function(data){
+			if ($.trim(data) == "ok") {
+				  var trId			= "#dislike_" + comid;
+				  var str = $(trId).html();
+				  str = str.split("（")[1];
+				  str = str.split("）")[0];
+				  var dislikenum	= parseInt(str);
+				  dislikenum			= (isdislike=="0")?(dislikenum+1):(dislikenum-1);
+				  msg					= (isdislike=="0")?"取消踩":"踩我";
+				  isdislike				= (isdislike=="0")?"1":"0";
+				  $("#"+id).attr("dislike",isdislike);
+				  $("#"+id).html("<img src='./public/img/frontimg/2.jpg' width='20px' height='20px'>"+msg+"（"+dislikenum+"）");
+			  }else {
+				  alert("操作超时");
+			}
+		});
+	}
+	$("[like]").click(iagree);
+	$("[dislike]").click(idisagree);
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#comsubmit").click(function(){
+		if('{$smarty.session.USER_NAME}' == ''){
+			 $("#login_btn").click();
+			 return false;
+		}
+		var comment = $.trim($("#comment").val());
+		if(comment == ''){
+			return false;
+		}
+		
+		if(comment.length>140){
+			$("#msg2").fadeToggle();
+			setTimeout(function () {
+				$("#msg2").fadeToggle();
+			},2000);
+			return false;
+		}
+		$.post("index.php?mod=comment&act=commin",
+				  {
+				    "articleId": "{$article.article_id}",
+				    "comContent": comment,
+				  },
+				  function(data){
+					  var mydata='';
+					  eval('mydata=' + data +';');
+					  if ($.trim(mydata.comment_id) != null) {
+						  $("#comment").val("");
+						  var content = mydata.comment_content;
+						  var str = "<div class='comment_list_item_div'>"
+			  					+"<div class='comment_list_face_div'>"
+			  					+"<img src ='{$smarty.session.USER_HEADPHOTO}' width='50px' height='50px'>"
+			  					+"</div>"
+			  					+"<div class='comment_list_right_div'>"
+			  					+"<div class='comment_list_username_div'>"
+								+mydata.user_name
+								+"<span>"+mydata.comment_addtime+"</span>"
+								+"</div>"
+								+"<div class='comment_list_content_div'>"
+								+content
+								+"</div>"
+								+"<div class='comment_list_agree_div'>"
+								+"</div>"
+								+"</div>"
+								+"<div class='new_hr_div'><hr size='1' color='#999999'></div>"
+								+"</div>";
+						$("#com_first").after(str);
+					  }else {
+//						  alert($.trim(mydata));
+					}
+				  });
+	});
+});
+</script>
+</head>
+<body>
+	{include file="fronttemplate/header_a.htm"}
+	<div class="page_div">
+		<div class="allnew_div">
+			<div class="new_title_div">
+				<a href="index.php?mod=article&act=detail&articleid={$article.article_id}&columnid={$article.column_id}">{$article.article_title}</a>
+			</div>
+		<div style="display:none"><img src="{$smarty.session.USER_HEADPHOTO}"></img></div> 
+			<div class="new_comment_div">
+				<span class="new_comment_name_span">网友评论</span>
+				<span class="new_comment_number_span">{$comnum}条评论</span>
+				<div class="new_comment_frame_div">
+					<div class="new_comment_input_div">
+						<form>
+							<textarea id="comment"></textarea>
+						</form>
+					</div>
+					<div class="new_comment_hr_div"><hr size="1" color="#666666"></div>
+					<div class="new_comment_btn_div" id="comsubmit" style="cursor:pointer">提交</div>
+					<div class="new_comment_msg" id="msg2" style="display: none">请把字数限制在140以内</div>
+				</div>
+			</div>
+			<div class="comment_list_div">
+				<div class="comment_list_name_div">全部评论</div>
+				<div class="new_hr_div" id="com_first"><hr size="4" color="#999999"></div>
+		<!-- 评论单元 -->		
+		{foreach item=item from=$comlist}
+				<div class="comment_list_item_div"  id="com_{$item.comment_id}">
+					<div class="comment_list_face_div">
+						<img src="{$item.user_headphoto}" width="50px" height="50px">
+					</div>
+					<div class="comment_list_right_div">
+						<div class="comment_list_username_div">{$item.user_name}
+								<span>{date("Y-m-d H:i:s",$item.comment_addtime)}</span>
+						</div>
+						<div class="comment_list_content_div">{$item.comment_content}</div>
+						<!-- 赞和踩 -->
+						<div class="comment_list_agree_div">
+				{if $item.user_comment_agree eq '' or  $item.user_comment_agree eq 0}						
+							<a  like="0" id="like_{$item.comment_id}" style="cursor:pointer"><img src="./public/img/frontimg/1.jpg" width="20px" height="20px">赞（{$item.comment_agrees}）</a> 
+							<a dislike="0" id="dislike_{$item.comment_id}" style="cursor:pointer"><img src="./public/img/frontimg/2.jpg" width="20px" height="20px">踩（{$item.comment_disagrees}）</a>
+						
+				{elseif $item.user_comment_agree eq "1"}	
+							<a like="1" id="like_{$item.comment_id}" style="cursor:pointer"><img src="./public/img/frontimg/1.jpg" width="20px" height="20px">取消赞（{$item.comment_agrees}）</a> 
+							<a dislike="0" id="dislike_{$item.comment_id}" style="cursor:pointer"><img src="./public/img/frontimg/2.jpg" width="20px" height="20px">踩（{$item.comment_disagrees}）</a>
+
+				{elseif  $item.user_comment_agree eq "2"}
+							<a  like="0" id="like_{$item.comment_id}" style="cursor:pointer"><img src="./public/img/frontimg/1.jpg" width="20px" height="20px">赞（{$item.comment_agrees}）</a> 
+							<a dislike="1" id="dislike_{$item.comment_id}" style="cursor:pointer"><img src="./public/img/frontimg/2.jpg" width="20px" height="20px">取消踩（{$item.comment_disagrees}）</a>
+				{/if}
+						</div>
+					</div>
+					<div class="new_hr_div"><hr size="1" color="#999999"></div>
+				</div>
+		{/foreach}
+
+	
+
+			</div>
+			<div class="bottomvar">
+						<div class="pagination">{$pageStr}</div>
+			</div>
+		</div>
+		{include file="fronttemplate/rightbar.htm"}
+	</div>
+	{include file="fronttemplate/footer.htm"}
+</body>
+</html>

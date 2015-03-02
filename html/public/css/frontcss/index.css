@@ -1,0 +1,264 @@
+.category_more_div a:link {
+	color: blue;
+}
+
+.category_more_div a:visited {
+	color: blue;
+}
+
+.category_more_div a:hover {
+	color: red;
+}
+
+.image_more_div a:link {
+	color: blue;
+}
+
+.image_more_div a:visited {
+	color: blue;
+}
+
+.image_more_div a:hover {
+	color: red;
+}
+
+.sign_div {
+	width: 1000px;
+	height: 360px;
+	float: left;
+	margin-bottom: 14px;
+}
+
+.topline_div {
+	width: 560px;
+	height: 360px;
+	float: left;
+}
+
+.topline_item_div {
+	width: 100%;
+	height: 170px;
+	float: left;
+}
+
+.topline_item_div .topline_title_div {
+	margin-bottom: 10px;
+	width: 100%;
+	font-family: "黑体";
+	font-size: 22px;
+	font-weight: bold;
+	float: left;
+}
+
+.topline_item_div .topline_image_div {
+	width: 160px;
+	height: 120px;
+	float: left;
+}
+
+.topline_item_div .topline_intro_div {
+	margin-left: 30px;
+	width: 360px;
+	height: 120px;
+	font-size: 13px;
+	float: left;
+}
+
+.topline_hr_div {
+	margin-top: 3px;
+	width: 100%;
+	float: left;
+}
+
+.scroll_image_div {
+	width: 400px;
+	height: 300px;
+	float: right;
+	position: relative;
+	overflow: hidden;
+}
+
+.scroll_image_div .scroll_image_item_div {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 400px;
+	height: 300px;
+	display: none;
+}
+
+.scroll_image_div .scroll_image_bar_div {
+	position: absolute;
+	top: 270px;
+	left: 250px;
+	width: 150px;
+	height: 20px;
+}
+
+.scroll_image_div .scroll_image_bar_div .scroll_bar_btn_div{
+	padding-top: 1px;
+	width: 18px;
+	height: 19px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	float: left;
+	opacity: 1;
+	filter: alpha(opacity=100);  
+	-moz-opacity:1;  
+	-khtml-opacity: 1;
+}
+
+.search_div {
+	width: 400px;
+	height: 60px;
+	float: right;
+}
+
+.search_div .search_input_div {
+	margin-top: 32px;
+	margin-right: 30px;
+	height: 30px;
+	float: right;
+}
+
+.search_div .search_input_div input {
+	width: 200px;
+	height: 20px;
+}
+
+.search_div .search_button_div {
+	background-image: url("../../img/frontimg/button.png");	
+	margin-top: 30px;
+	width: 60px;
+	height: 23px;
+	padding-top: 7px;
+	text-align: center;
+	font-size: 13px;
+	float: right;
+}
+
+.category_div {
+	width: 720px;
+	float: left;
+}
+
+.category_item_div {
+	margin-bottom: 3px;
+	width: 720px;
+	height: 600px;
+	float: left;
+}
+
+.category_item_div .category_hr_div {
+	width: 100%;
+	float: left;
+}
+
+.category_item_div .category_name_div {
+	margin-bottom: 6px;
+	font-size: 24px;
+	font-family: "黑体";
+	font-weight: bold;
+	float: left;
+}
+
+.category_item_div .category_more_div {
+	font-size: 13px;
+	float: right;
+}
+
+.category_item_div .category_image_div {
+	margin-top: 3px;
+	width: 280px;
+	height: 480px;
+	line-height: 42px;
+	text-align: center;
+	font-size: 13px;	
+	float: left;
+}
+
+.category_item_div .category_image_div .category_bigimage_div {
+	width: 280px;
+	float: left;
+}
+
+.category_item_div .category_image_div .category_leftimage_div {
+	width: 120px;
+	float: left;
+}
+
+.category_item_div .category_image_div .category_rightimage_div {
+	width: 120px;
+	float: right;
+}
+
+.category_item_div .category_article_div {
+	margin-left: 30px;
+	width: 410px;
+	height: 480px;
+	float: left;
+}
+
+.category_item_div .category_article_div .category_article_item_div {
+	width: 100%;
+	float: left;
+}
+
+.category_item_div .category_article_div .category_article_item_div .category_article_title_div{
+	margin-bottom: 12px;
+	width: 100%;
+	font-family: "黑体";
+	font-size: 22px;
+	font-weight: bold;
+	float: left;
+}
+
+.category_item_div .category_article_div .category_article_item_div .category_article_intro_div{
+	margin-bottom: 12px;
+	width: 100%;
+	font-size: 13px;
+	float: left;
+}
+
+.image_div {
+	width: 100%;
+	height: 250px;
+	float: left;
+}
+
+.image_div .img_hr_div {
+	width: 100%;
+	float: left;
+}
+
+.image_div .image_name_div {
+	color: red;
+	font-size: 24px;
+	font-family: "黑体";
+	font-weight: bold;
+	float: left;
+}
+
+.image_div .image_more_div {
+	font-size: 13px;
+	float: right;
+}
+
+.image_div .image_imgs_div {
+	margin-top: 15px;
+	width: 100%;
+	height: 180px;
+	float: right;
+}
+
+.image_div .image_imgs_div .image_item_div {
+	margin-left: 13px;
+	width: 240px;
+	height: 180px;
+	float: left;
+}

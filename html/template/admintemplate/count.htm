@@ -1,0 +1,83 @@
+{include file="admintemplate/header.htm"}
+<script src="./public/js/highcharts.js"></script>
+<script src="./public/js/modules/exporting.js"></script>
+<script>
+var title, author, views, comments, agree, disagree, error;
+a_title     = "{$article_title}";
+a_author    = "{$article_author}";
+a_views     = {$article_views};
+a_comments  = {$article_comments};
+a_agree     = {$article_agree};
+a_disagree  = {$article_disagree};
+error       = "{$error}";
+{literal}
+$(function () {
+    if(error != ""){
+        alert(error);
+        location.href="index.php?mod=article&act=getColumn";
+        return false;
+    }
+    
+    $('#draw').highcharts({
+        chart: {
+            type: 'column',
+            margin: [ 50, 50, 100, 80]
+        },
+        title: {
+            text: a_title
+        },
+        subtitle: {
+            text: a_author
+        },
+        xAxis: {
+            categories: [
+                '访问量',
+                '评论量',
+                '点赞数',
+                '踩压数'
+            ],
+            labels: {
+                rotation: -45,
+                align: 'right',
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: '<b>{point.y:.1f} 次</b>',
+        },
+        series: [{
+            name: 'Population',
+            data: [a_views, a_comments, a_agree, a_disagree],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                x: 4,
+                y: 10,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: '0 0 3px black'
+                }
+            }
+        }]
+    });
+});
+{/literal}
+</script>
+<div id="draw" class="main">
+</div>
+{include file="admintemplate/footer.htm"}

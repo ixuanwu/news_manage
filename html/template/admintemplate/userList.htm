@@ -1,0 +1,44 @@
+{include file="admintemplate/header.htm"}
+<div class="main">
+	<table cellspacing="0" width="100%">
+		<tr class="title">
+			<th>用户ID</th>
+			<th>用户名</th>
+			<th>密码</th>
+			<th>性别</th>
+			<th>手机号</th>
+			<th>生日</th>
+			<th>注册时间</th>
+			<th>登录时间</th>
+			<th>登录IP</th>
+			<th>头像</th>
+			<th>邮箱</th>
+			<th>权限组</th>
+			<th>操作</th>
+		</tr>
+		{foreach $userlist as $key=>$user}
+			<tr id="del{$user.user_id}">
+				<td>{$user.user_id}</td>
+				<td>{$user.user_name}</td>
+				<td>{$user.user_password}</td>
+				<td>{if $user.user_gender==0}男{/if}{if $user.user_gender==1}女{/if}</td>
+				<td>{$user.user_telephone}</td>
+				<td>{$user.user_birthday}</td>
+				<td>{date("Y-m-d H:i:s",$user.user_addtime)}</td>
+				<td>{date("Y-m-d H:i:s",$user.user_logintime)}</td>
+				<td>{$user.user_loginip}</td>
+				<td><img src={$user.user_headphoto} width="20px" height="16px"></td>
+				<td>{$user.user_email}</td>
+				<td>{if $user.user_permission==0}普通用户组{/if}</td>
+				<td colspan="2">
+					<a href="index.php?mod=admin&act=updateUser&userid={$user.user_id}" id="updateuser">编辑</a>
+					<a href="javascript:void(0)" onclick="return checkDel('{$user.user_name}',{$user.user_id})">删除</a>
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+	<div class="bottomvar">
+		<div class="pagination">{$pageStr}</div>
+	</div>
+</div>
+{include file="admintemplate/footer.htm"}

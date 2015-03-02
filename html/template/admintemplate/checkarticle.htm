@@ -1,0 +1,210 @@
+{include file="admintemplate/header.htm"}
+<script type="text/javascript">
+$(document).ready(function(){
+	var editor1;
+	KindEditor.ready(function(K) {
+		editor1 = K.create('textarea[name="articlecontent"]', {
+			cssPath : './public/kindeditor/plugins/code/prettify.css',
+			uploadJson : './public/kindeditor/php/upload_json.php',
+			fileManagerJson : './public/kindeditor/php/file_manager_json.php',
+			allowFileManager : true,
+		});
+		prettyPrint();
+	});
+	
+	$("a[service='editArticle']").click(function(){
+		$("#dis1").css("display", "none");
+		$("#dis2").css("display", "");
+		$.post("index.php?mod=article&act=getcolumns",
+				function(data){
+					var myjson='';
+			        eval('myjson=' + data + ';');
+			        var html='';
+			        for(i=0;i<myjson.length;i++){
+			        	html+="<option value='"+myjson[i]['column_id']+"'>———"+myjson[i]['column_name']+"———</option>";
+			        }
+					$("#column").html(html);
+			});
+			$.post("index.php?mod=article&act=updateCheckArticle&articleid=" + $(this).attr("id"),
+					function(data){
+						var myjson='';
+				        eval('myjson=' + data + ';');
+						$("#title").val(myjson['article_title']);
+						var columnid = myjson['column_id'];
+						$("#column option[value='"+columnid+"']").attr("selected","selected");
+						$("#article_pic").attr("src", myjson['article_picture']);
+						$("#introduce").val(myjson['article_introduction']);
+						$("#content").val(myjson['article_content']);
+						$("#accept").click(function(){
+							var result = confirm('你确定文章要通过审核吗？');
+							if(result){
+								$.post("index.php?mod=article&act=checkarticle&articleid=" +myjson['article_id']+"&columnpid="+myjson['column_id'],
+									function(data){
+										if($.trim(data) == "ok"){
+											alertify.success("审核通过");
+											setTimeout('location.href=location.href',1000);
+										}else{
+											alertify.error("未通过审核");
+										}
+									});
+							}
+						});
+						$("#delete").click(function(){
+							var result = confirm('你确定要删除吗？');
+							if(result){
+								$.post("index.php?mod=article&act=deleteArticle&articleid=" + myjson['article_id'],
+										function(data){
+									if($.trim(data) == "删除成功"){
+										alertify.success(data);
+										setTimeout('location.href=location.href',1000);
+									}else{
+										alertify.error(data);
+									}
+								});
+							}
+						});
+						$("#preview").click(function(){
+							$.post("index.php?mod=article&act=detail&check=0&articleid=" +myjson['article_id']+"&columnid="+myjson['column_id'],
+									function(data){
+								  previewwin= open("", "previewwin","status=no,menubar=yes,toolbar=no");
+								  previewwin.document.open();
+								  previewwin.document.write(data);
+								  previewwin.document.close();
+							});
+						});
+						editor1.html(myjson['article_content']);
+			});
+	});
+	$("a[service='deleteArticle']").click(function(){
+		var result = confirm('你确定要删除吗？');
+		if(result){
+			$.post("index.php?mod=article&act=deleteArticle&articleid=" + $(this).attr("id"),
+					function(data){
+				if($.trim(data) == "删除成功"){
+					alertify.success(data);
+					setTimeout('location.href=location.href',1000);
+				}else{
+					alertify.error(data);
+				}
+			});
+		}
+	});
+	
+	$("a[service='previewArticle']").click(function(){
+		$.post("index.php?mod=article&act=detail&check=0&articleid=" + $(this).attr("id")+"&columnid={$columnpid}",
+				function(data){
+			  previewwin= open("", "previewwin","status=no,menubar=yes,toolbar=no");
+			  previewwin.document.open();
+			  previewwin.document.write(data);
+			  previewwin.document.close();
+		});
+	});
+	$("a[service='acceptArticle']").click(function(){
+		var result = confirm('你确定文章要通过审核吗？');
+		if(result){
+			$.post("index.php?mod=article&act=checkarticle&articleid=" + $(this).attr("id")+"&columnpid={$columnpid}",
+				function(data){
+					if($.trim(data) == "ok"){
+						alertify.success("审核通过");
+						setTimeout('location.href=location.href',1000);
+					}else{
+						alertify.error("未通过审核");
+					}
+				});
+		}
+	});
+	$("#toreturn").click(function(){
+		var result = confirm('你确定要返回吗？');
+		if(result){
+			location.href=location.href;
+		}
+	});
+});
+</script>
+<script type="text/javascript"  src="./public/js/checkjs/uploadarticle.js"></script>
+<div class="main" style="margin-top: 3px">
+<div class="twovar {if in_array($mod,array('shippingAddress2'))}nothing-twovar{/if}" style="background-color: gray">
+  <ul>
+  		{foreach $lcolumnlist as $key => $column}
+			<li><a style="border-color: gray" href="index.php?mod=article&act=getArticle&columnid={$column.column_id}" {if $columnid== {$column.column_id} }class = "cho"{/if}>{$column.column_name}</a></li>
+		{/foreach}
+		<li><a id="checkArticle" style="border-color: gray" href="index.php?mod=article&act=getCheckArticle&columnpid={$columnpid}" {if $smarty.get.act == 'getCheckArticle'}class = "cho"{/if}>未审核文章</a></li>
+  </ul>
+</div>
+<div id="dis1">
+	<table cellspacing="0" width="100%">
+	<tr class="title">
+			<th>文章ID</th>
+			<th>文章标题</th>
+			<th>文章作者</th>
+			<th>文章图片</th>
+			<th>文章导语</th>
+			<th>文章添加时间</th>
+			<th>操作</th>
+			<th></th>
+	</tr>
+		{foreach $newslist as $key=>$newsinfo}
+			<tr>
+				<td>{$newsinfo.article_id}</td>
+				<td>{$newsinfo.article_title}</td>
+				<td>{$newsinfo.article_author}</td>
+				<td><img src={$newsinfo.article_picture} width="20px" height="16px"></td>
+				<td>{$newsinfo.article_introduction}</td>
+				<td>{date("Y-m-d H:i:s",$newsinfo.article_addtime)}</td>
+				<td colspan="4">
+					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="editArticle">详情<input id="detailarticle{$newsinfo.article_id}" type="hidden" value="{$newsinfo.article_id}" /></a>
+					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="previewArticle" test="{$newsinfo.column_id}">预览<input id="articlecolumn{$newsinfo.column_id}" type="hidden" value="{$newsinfo.column_id}" /></a>
+					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="acceptArticle">通过</a>
+					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="deleteArticle">删除</a>
+				</td>
+				<td></td>
+			</tr>
+		{/foreach}
+</table>
+<div class="bottomvar">
+		<div class="pagination">{$pageStr}</div>
+	</div>
+</div>
+</div>
+<div id="dis2" style="display:none">
+			<form id="formcontent" method="post" action="" enctype="multipart/form-data">
+					<div class = "my_comment">未审核文章</div>
+					<div class="line">
+						<span class="my_title">标题：</span>
+						<span><input class = "my_a_text" type = "text" id="title"  name="articletitle"/></span>
+					</div>
+					<div class="a_line">
+						<span class="my_title">栏目：</span>
+						<span>
+							<select class="my_select" id="column" name="columnid">
+				
+							</select>
+						</span>
+					</div>
+					<div class="a_line">
+						<span class="my_title">图片：</span>
+						<span><input class = "my_b_text" type = "file" id="picture" name="articlepicture" multiple="multiple"></span>
+						<!-- <span><input class = "my_a_button" type="button" value="浏览"></span> -->
+					</div>
+					<div class = "show_pic">
+						<img class="my_picture" src="" style="width:160px;height:120px;" id="article_pic"/>
+					</div>
+					<div class="line">
+						<span class="my_title">导语：</span>
+						<span><textarea class="my_lead" cols ="83" rows = "3" id="introduce" name="articleintroduction"></textarea></span>
+					</div>
+					<div class="line">
+						<span class="my_title">内容：</span>
+						<span style="margin-left:15px;">
+							<textarea name="articlecontent" style="width:500px;height:200px;" id="content" ></textarea>
+						</span>
+					</div>
+					<div class="line">
+						<input style = "margin-left: 100px" type = "button" value = "预览" id="preview"/>
+						<input style = "margin-left: 100px" type = "button" value = "通过" id="accept"/>
+						<input style = "margin-left: 100px" type = "button" value = "删除" id="delete"/>
+						<input style = "margin-left: 100px" type = "button" value = "再议" id="toreturn"/>
+					</div>
+					</form>
+			</div>
+{include file="admintemplate/footer.htm"}

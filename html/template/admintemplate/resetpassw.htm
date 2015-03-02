@@ -1,0 +1,24 @@
+{include file="admintemplate/header.htm"}
+</head>
+<body>
+<form>
+	<div class="cont">
+		<div class="div_input">
+			<div class="name_info">新密码：</div>
+			<input type="hidden" id="userid" value="{$userid}">
+			<input type="password" name ="newpassw" id="newpassw"  class="input" onblur="checkNewpassw()" />
+			<span id="tips-newpassw" class="err_msg"></span>
+		</div>
+		<div class="div_input">
+			<div class="name_info">确认密码：</div>
+			<input type="password" name ="renewpassw" id="renewpassw"  class="input" onblur="checkRenewPassw()" />
+			<span id="tips-renewpassw" class="err_msg"></span>
+		</div>
+		<div class="all_btn">
+			<input type="submit" id="revpassw-btn" value="修改" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="重置" />
+		</div>
+	</div>
+</form>
+</body>
+{include file="admintemplate/footer.htm"}

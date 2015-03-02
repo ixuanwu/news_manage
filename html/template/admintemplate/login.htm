@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户登录</title>
+<script type="text/javascript" src="./public/js/jquery-1.7.2.js"></script>
+
+<link href="http://misc.erp.valsun.cn/css/style.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/alertify.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="loginbody">
+	<div class="loginmain">
+    	<div class="box">
+        	<div class="loginlogo">
+            	<p>
+                	新闻系统
+                </p>
+            </div>
+            <div class="userlogin">
+            	<form onsubmit="return check();">
+				<table>
+					<tr>
+						<td style="font-size:12px; color:#F00;">{$error}</td>
+					</tr>
+                	<tr>
+                    	<td>
+                        	<span>用户名：</span>
+                            <span style="font-size:12px; color:#F00; float:right;" id="tips-username"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                        	<input name="username" type="text" id="username"/>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                        	<span>登录密码：</span>
+                            <span style="font-size:12px; color:#F00; float:right;" id="tips-password"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                        	<input name="password" type="password" id="password"/>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td class="go">
+                        	<input type="submit" value="登录" id="login-btn"/>
+                        </td>
+                    </tr>
+                </table>
+				</form>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="./public/js/alertify.js"></script>
+</body>
+</html>
+<script>
+{literal}
+$("#login-btn").click(function(){
+    var username,password,company;
+    username = $.trim($("#username").val());
+    password = $.trim($("#password").val());
+	if(username == ''){
+		$("#tips-username").html("用户名不能为空!");
+		$("#username").focus();
+		return false;
+	}else {
+		$("#tips-username").html("");
+	}
+	if(password == ''){
+		$("#tips-password").html("密码不能为空!");
+		$("#password").focus();
+		return false;
+	}else {
+		$("#tips-password").html("");
+	}
+	$("#login-btn").val("登录中,请稍候...");
+	$.post("index.php?mod=admin&act=adminLogin",{"username":username, "password":password},function(rtn){
+		if(rtn.tip == "ok"){
+			alertify.success("亲,登录成功！");
+			setTimeout("location.href='index.php?mod=admin&act=getUserList'",1000);
+		}else {
+			$("#login-btn").val("登录");
+			alertify.error("亲,登录失败！可能原因：<br/>1、请检查帐号密码是否输入正确！<br/>2、系统未授权你登录此系统！");        
+		}
+	},
+	'json'
+	);
+});
+function check(){
+	return false;
+}
+{/literal}
+</script>
+

@@ -1,0 +1,74 @@
+{include file="admintemplate/header.htm"}
+<script src="./public/js/containspecial.js"></script>
+<div class="main">
+    <div class="userlogin">
+	   <table cellspacing="0" width="100%">
+            <tr>
+                <td>栏目ID</td>
+                <td>{$column.column_id}</td>
+            <tr>
+                <td>栏目名</td>
+                <td><input type="text" id="column_name" name="column_name" value="{$column.column_name}" /></td>
+                <td><p style="font-size:12px; color:#F00; float:right;" id="tips-name"></p></td>
+            </tr>
+			     <td>父栏目</td>
+                 <td>
+                    <select id="column_pid">
+                        <option value="0">顶层栏目</option>
+                        {foreach $columnlist as $item}
+                            <option value="{$item.column_id}" {if $item.column_id == $column.column_pid} selected="true" {/if} >{$item.column_name}</option>
+                        {/foreach}
+                    </select>
+                 </td>
+                <td><p style="font-size:12px; color:#F00; float:right;" id="tips-pid"></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="mod">修改</button>
+                </td>
+            </tr>
+	   </table>
+    </div>
+</div>
+<script>
+var id = {$column.column_id};
+{literal}
+    $("#mod").click(function(){
+        if($("#column_name").val() == ""){
+            $("#tips-name").html("栏目名不能为空！");
+            return false;
+        }else if($("#column_name").val().length > 20){
+            $("#tips-name").html("栏目名长度不能大于20！");
+            return false;
+        }else if(containSpecial($("#column_name").val())){
+            $("#tips-name").html("栏目名不能包含特殊字符");
+            return false;
+        }else{
+            $("#tips-name").html("");
+        }
+        
+        if($("#column_pid").val() == id){
+            $("#tips-pid").html("栏目的父栏目不能为自己！");
+            return false;
+        }else{
+            $("#tips-pid").html("");
+        }
+        data = {
+            "mod":"column",
+            "act":"mod",
+            "column_id":id,
+            "column_pid":$("#column_pid").val(),
+            "column_name":$("#column_name").val()
+        };
+        $.get("index.php",data,function(rtn){
+            if($.trim(rtn) == "ok"){
+                alertify.success("修改成功！");
+                location.href = "index.php?mod=column&act=index";
+            }else{
+                alertify.error("修改失败！");
+            }
+        });
+    });
+{/literal}
+</script>
+{include file="admintemplate/footer.htm"}

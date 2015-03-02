@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>index</title>
+<script type="text/javascript" src="http://misc.erp.valsun.cn/js/jquery-1.8.3.min.js"></script>
+<link href="./public/css/frontcss/public.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/index.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/columnview.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	{include file="fronttemplate/header_a.htm"}
+	<div class="page_div">
+		<div class="allnews_div">
+			<div class="search_info_div">
+				搜索“
+				<span>{$search_input}</span>
+				”的结果：（共找到{$searchnews_count}条结果）
+			</div>
+			<div class="list_div">
+			{foreach from=$searchnews item=newsinfo}
+				<div class="list_item_div">
+					<div class="list_item_image_div">
+						<a href="index.php?mod=article&act=detail&articleid={$newsinfo.article_id}&columnid={$newsinfo.column_id}"><img src="{$newsinfo.article_picture}" width="120px" height="90px"></a>
+					</div>
+					<div class="list_item_content_div">
+						<div class="list_item_title_div">
+							<a href="index.php?mod=article&act=detail&articleid={$newsinfo.article_id}&columnid={$newsinfo.column_id}">{mb_substr($newsinfo.article_title, 0, 20, 'utf-8')}</a>
+						</div>
+						<div class="list_item_intro_div">
+							{mb_substr($newsinfo.article_introduction, 0, 100, 'utf-8')}
+						</div>
+					</div>
+				</div>
+			{/foreach}
+				
+			</div>
+<!-- 			<div class="topage_div"> -->
+				<div class="bottomvar">
+					<div class="pagination">{$pageStr}</div>
+				</div>
+<!-- 			</div> -->
+		</div>
+		{include file="fronttemplate/rightbar.htm"}
+	</div>
+	{include file="fronttemplate/footer.htm"}
+</body>
+</html>

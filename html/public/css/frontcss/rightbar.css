@@ -1,0 +1,68 @@
+.rightbar_page_div {
+	margin-left: 30px;
+	width: 250px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div {
+	width: 100%;
+	height: 430px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div .rightbar_logo_div {
+	width: 140px;
+	height: 40px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div .rightbar_topline_div {
+	margin-top: 15px;
+	width: 100%;
+	height: 130px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div .rightbar_topline_div .rightbar_topline_title_div {
+	width: 100%;
+	font-family: "黑体";
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div .rightbar_topline_div .rightbar_topline_image_div {
+	margin-top: 15px;
+	width: 120px;
+	height: 90px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div .rightbar_topline_div .rightbar_topline_intro_div {
+	margin-top: 15px;
+	margin-left: 15px;
+	width: 115px;
+	height: 90px;
+	font-size: 13px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_item_div .rightbar_list_div {
+	margin-top: 15px;
+	width: 100%;
+	height: 210px;
+	font-size: 13px;
+	line-height: 15px;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_adv_div {
+	width: 100%;
+	float: left;
+}
+
+.rightbar_page_div .rightbar_adv_div .rightbar_adv_item {
+	margin-bottom:10px;
+	width: 100%;
+	float: left;
+}

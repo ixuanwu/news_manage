@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>index</title>
+<script type="text/javascript" src="http://misc.erp.valsun.cn/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./public/js/search.js"></script>
+<script type="text/javascript" src="./public/js/frontjs/index.js"></script>
+<link href="./public/css/frontcss/public.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body> 
+	{include file="fronttemplate/header.htm"}
+	<div class="page_div">
+		<div class="sign_div">
+			<div class="topline_div">
+				<div class="topline_item_div">
+					<div class="topline_title_div">
+						<a href="index.php?mod=article&act=detail&articleid={$importnews[0].article_id}&columnid={$importnews[0].column_id}">{mb_substr($importnews[0].article_title, 0, 23, 'utf-8')}</a>
+					</div>
+					<div class="topline_image_div">
+						<a href="index.php?mod=article&act=detail&articleid={$importnews[0].article_id}&columnid={$importnews[0].column_id}"><img src="{$importnews[0].article_picture}" width="160px" height="120px"></a>
+					</div>
+					<div class="topline_intro_div">
+						{mb_substr($importnews[0].article_introduction, 0, 50, 'utf-8')}
+					</div>
+				</div>
+				<div class="topline_hr_div">
+					<hr size="1">
+				</div>
+				<div class="topline_item_div">
+					<div class="topline_title_div">
+						<a href="index.php?mod=article&act=detail&articleid={$importnews[1].article_id}&columnid={$importnews[0].column_id}">{mb_substr($importnews[1].article_title, 0, 23, 'utf-8')}</a>
+					</div>
+					<div class="topline_image_div">
+						<a href="index.php?mod=article&act=detail&articleid={$importnews[1].article_id}&columnid={$importnews[0].column_id}"><img src="{$importnews[1].article_picture}" width="160px" height="120px"></a>
+					</div>
+					<div class="topline_intro_div">
+						{mb_substr($importnews[1].article_introduction, 0, 50, 'utf-8')}
+					</div>
+				</div>
+			</div>
+			<div class="scroll_image_div">
+				<div id="scroll_image_item1" class="scroll_image_item_div" style="background-color:yellow">
+					<a href="index.php?mod=article&act=detail&articleid={$importnews[2].article_id}&columnid={$importnews[2].column_id}">
+						<img src="{$importnews[2].article_picture}" width="400px" height="300px">
+					</a>
+				</div>
+				<div id="scroll_image_item2" class="scroll_image_item_div" style="background-color:red">
+					<a href="index.php?mod=article&act=detail&articleid={$importnews[3].article_id}&columnid={$importnews[3].column_id}">
+						<img src="{$importnews[3].article_picture}" width="400px" height="300px">
+					</a>
+				</div>
+				<div id="scroll_image_item3" class="scroll_image_item_div" style="background-color:blue">
+					<a href="index.php?mod=article&act=detail&articleid={$importnews[4].article_id}&columnid={$importnews[4].column_id}">
+						<img src="{$importnews[4].article_picture}" width="400px" height="300px">
+					</a>
+				</div>
+				<div id="scroll_image_item4" class="scroll_image_item_div" style="background-color:green">
+					<a href="index.php?mod=article&act=detail&articleid={$importnews[5].article_id}&columnid={$importnews[5].column_id}">
+						<img src="{$importnews[5].article_picture}" width="400px" height="300px">
+					</a>
+				</div>
+				<div id="scroll_image_item5" class="scroll_image_item_div" style="background-color:black">
+					<a href="index.php?mod=article&act=detail&articleid={$importnews[6].article_id}&columnid={$importnews[6].column_id}">
+						<img src="{$importnews[6].article_picture}" width="400px" height="300px">
+					</a>
+				</div>
+				<div class="scroll_image_bar_div">
+					<div id="scroll_bar_btn1" class="scroll_bar_btn_div">1</div>
+					<div id="scroll_bar_btn2" class="scroll_bar_btn_div">2</div>
+					<div id="scroll_bar_btn3" class="scroll_bar_btn_div">3</div>
+					<div id="scroll_bar_btn4" class="scroll_bar_btn_div">4</div>
+					<div id="scroll_bar_btn5" class="scroll_bar_btn_div">5</div>
+				</div>
+			</div>
+			<div class="search_div">
+				<a id="search" href="#"><div class="search_button_div">搜索</div></a>
+				<div class="search_input_div">
+					<form id="search_form" action="" method="post" onsubmit="return false">
+						<input id="search_input" type="text" size="20"/>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="category_div">
+			{foreach from=$columnnews item=columninfo}
+			<div class="category_item_div">
+				<div class="category_hr_div"><hr size="3" color="#999999"></div>
+				<div class="category_name_div">{$columninfo.column_name}</div>
+				<div class="category_more_div"><a href="index.php?mod=article&act=column&columnpid={$columninfo.column_id}&columnname={$columninfo.column_name}">更多</a></div>
+				<div class="category_hr_div"><hr size="1"></div>
+				<div class="category_image_div">
+					<div class="category_bigimage_div">
+						<a href="index.php?mod=article&act=detail&articleid={$columninfo.left[0].article_id}&columnid={$columninfo.left[0].column_id}">
+							<img src="{$columninfo.left[0].article_picture}" width="280px" height="210px"><br>{mb_substr($columninfo.left[0].article_title, 0, 16, 'utf-8')}
+						</a>
+					</div>
+					<div class="category_leftimage_div">
+						<a href="index.php?mod=article&act=detail&articleid={$columninfo.left[1].article_id}&columnid={$columninfo.left[1].column_id}">
+							<img src="{$columninfo.left[1].article_picture}" width="120px" height="90px"><br>{mb_substr($columninfo.left[1].article_title, 0, 9, 'utf-8')}
+						</a>
+					</div>
+					<div class="category_rightimage_div">
+						<a href="index.php?mod=article&act=detail&articleid={$columninfo.left[2].article_id}&columnid={$columninfo.left[2].column_id}">
+							<img src="{$columninfo.left[2].article_picture}" width="120px" height="90px"><br>{mb_substr($columninfo.left[2].article_title, 0, 9, 'utf-8')}
+						</a>
+					</div>
+					<div class="category_leftimage_div">
+						<a href="index.php?mod=article&act=detail&articleid={$columninfo.left[3].article_id}&columnid={$columninfo.left[3].column_id}">
+							<img src="{$columninfo.left[3].article_picture}" width="120px" height="90px"><br>{mb_substr($columninfo.left[3].article_title, 0, 9, 'utf-8')}
+						</a>
+					</div>
+					<div class="category_rightimage_div">
+						<a href="index.php?mod=article&act=detail&articleid={$columninfo.left[4].article_id}&columnid={$columninfo.left[4].column_id}">
+							<img src="{$columninfo.left[4].article_picture}" width="120px" height="90px"><br>{mb_substr($columninfo.left[4].article_title, 0, 9, 'utf-8')}
+						</a>
+					</div>
+				</div>
+				<div class="category_article_div">
+				{foreach from=$columninfo.right item=rightinfo}
+					<div class="category_article_item_div">
+						<div class="category_article_title_div">
+							<a href="index.php?mod=article&act=detail&articleid={$rightinfo.article_id}&columnid={$rightinfo.column_id}">{mb_substr($rightinfo.article_title, 0, 16, 'utf-8')}</a>
+						</div>
+						<div class="category_article_intro_div">
+							{mb_substr($rightinfo.article_introduction, 0, 28, 'utf-8')}
+						</div>
+					</div>
+				{/foreach}
+				</div>
+			</div>
+			{/foreach}
+			
+		</div>
+		{include file="fronttemplate/rightbar.htm"}
+		<div class="image_div">
+			<div class="image_hr_div"><hr size="3" color="#999999"></div>
+			<div class="image_name_div">读图</div>
+			<div class="image_more_div"><a href="index.php?mod=article&act=picture&columnid=11&columnname=读图">更多</a></div>
+			<div class="image_imgs_div">
+			
+				<div class="image_item_div" style="margin-left: 0px;">
+					<a href="index.php?mod=article&act=detail&articleid={$picturenews[0].article_id}&columnid={$picturenews[0].column_id}"><img src="{$picturenews[0].article_picture}" width="240px" height="180px"></a>
+				</div>
+				{section loop=$picturenews name=i start=1}
+				<div class="image_item_div">
+					<a href="index.php?mod=article&act=detail&articleid={$picturenews[i].article_id}&columnid={$picturenews[i].column_id}"><img src="{$picturenews[i].article_picture}" width="240px" height="180px"></a>
+				</div>
+				{/section}
+			</div>
+		</div>
+	</div>
+	{include file="fronttemplate/footer.htm"}
+</body>
+</html>

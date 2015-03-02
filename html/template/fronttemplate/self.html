@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$per_center}</title>
+<script type="text/javascript" 		src="./public/js/jquery-1.7.2.js"></script>
+<link href="./public/css/frontcss/header.css" 	rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/self.css" 	rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/public.css" 	rel="stylesheet" type="text/css" />
+<link href="./public/css/alertify.css" 			rel="stylesheet" type="text/css" />
+<link rel="stylesheet" 				href="./public/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" 				href="./public/kindeditor/plugins/code/prettify.css" />
+<link rel="stylesheet"				href="./public/css/page.css"  type="text/css" />
+<script charset="utf-8" 			src="./public/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" 			src="./public/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" 			src="./public/kindeditor/plugins/code/prettify.js"></script>	
+<script type="text/javascript" 		src="./public/js/frontjs/self.js"></script>
+<script type="text/javascript" 		src="./public/js/checkjs/revpassw.js"></script>
+<script type="text/javascript"  	src="./public/js/checkjs/userinfo.js"></script>
+<script type="text/javascript" 		src="./public/js/localtime.js"></script>
+<script type="text/javascript"  	src="./public/js/checkjs/uploadarticle.js"></script>
+<script type="text/javascript" 		src="./public/js/checkjs/showpicture.js"></script>
+<script type="text/javascript"  	src="./public/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript"  	src="./public/js/checkjs/checkerr.js"></script>
+<script type="text/javascript">
+		KindEditor.ready(function(K) {
+			window.editor1 = K.create('textarea[name="articlecontent"]', {
+				cssPath : './public/kindeditor/plugins/code/prettify.css',
+				uploadJson : './public/kindeditor/php/upload_json.php',
+				fileManagerJson : './public/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+			});
+			prettyPrint();
+		});
+
+function comdel(comid,articleid){
+	if (confirm("确定要删除吗?")) {
+		$.post("index.php?mod=comment&act=icomdel",
+				  {
+				    "commentId": comid,
+				    "articleId": articleid,
+				  },
+				  function(data){
+					  if ($.trim(data) == "success") {
+						  var trId = "#com_" + comid;
+						  $(trId).remove();
+					  }else {
+						  alert($.trim(data));
+					}
+		});
+	}
+}
+</script>	
+
+</script>
+</head>
+<body>
+<script type="text/javascript" src="./public/js/alertify.js"></script>
+	<div class="head_page_div">
+	<div class="page_div">
+		<div class="top_div">
+			<div class="time_div" id="Timer"></div>
+			<div class="welcome_div">
+				{if $temp == 0}
+				<a id="login_btn" href="#">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a id="regist_btn" href="#">注册</a>
+				{else}
+				{$userid},欢迎你&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="{$person_cen}">个人中心</a>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="index.php?mod=article&act=index">返回首页</a>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="{$logout}">退出登录</a>
+				{/if}
+			</div>
+			<!--end of welcom_div-->
+		</div>
+		<!--end of top_div-->
+	</div>
+	<!--end of page_div-->
+	<div class="head_hr"><hr size="1"/></div>
+	</div>
+	<!--end of head_page_div-->
+	<div class="all">
+	<div class="container">
+		<div class="comment">个人中心</div>
+		<div class="top_hr"><hr size="1" style="width:1000px" /></div>
+		<div class="left">
+			<div class="my_left1">
+				<a href="index.php?mod=user&act=person&serviceid=1">
+					<div id="my_menu0"><div class="my_text_font"></div>基本资料</div>
+				</a>
+			</div>
+			<div class="my_left2">
+				<a href="index.php?mod=user&act=person&serviceid=2">
+					<div id="my_menu1"><div class="my_text_font"></div>详细资料</div>
+				</a>
+			</div>
+			<div class="my_left3">
+				<a href="index.php?mod=user&act=person&serviceid=3">
+					<div id="my_menu2"><div class="my_text_font"></div>头像管理</div>
+				</a>
+			</div>
+			<div class="my_left4">
+				<a href="index.php?mod=user&act=person&serviceid=4">
+					<div id="my_menu3"><div class="my_text_font"></div>我的记录</div>
+				</a>
+			</div>
+			<div class="my_left5">
+				<a href="index.php?mod=user&act=person&serviceid=5">
+					<div id="my_menu4"><div class="my_text_font"></div>投递文章</div>
+				</a>
+			</div>
+		</div>
+		<!-- end of left-->
+		<div class="right">
+			<div id="dis1" style="display:none">
+				<div class = "my_comment">基本资料</div>
+				<div class="line">
+					<span class="my_title">用&nbsp;户&nbsp;名：</span>
+				<span><input class = "my_text" type = "text" readonly="readonly" value="{$smarty.session.USER_NAME}" id="userid"/></span>
+				</div>
+				<div class="line">
+					<span class="my_title">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+					<span><input class = "my_text" type = "text" readonly="readonly" value="{$smarty.session.USER_EMAIL}"/></span>
+				</div>
+				<div class="line">
+					<span class="my_title">原始密码：</span>
+					<span><input class = "my_text" type = "password" id="oldpassw" onblur="checkOldpassw()"/></span>
+					<span id="tips-oldpassw" class="regist_errortip_span"></span>
+				</div>
+				<div class="line">
+					<span class="my_title">新&nbsp;密&nbsp;码：</span>
+					<span><input class = "my_text" type = "password" id="newpassw" onblur="checkNewpassw()"/></span>
+					<span id="tips-newpassw" class="regist_errortip_span"></span>
+				</div>
+				<div class="line" >
+					<span class="my_title">确认密码：</span>
+					<span><input class = "my_text" type = "password" id="renewpassw" onblur="checkRenewPassw()"/></span>
+					<span id="tips-renewpassw" class="regist_errortip_span"></span>
+				</div>
+				<div class="line">
+					<input class = "my_button" type = "button" value = "保存" id="revise-btn"/>
+				</div>
+			</div>
+			<!-- end of dis1-->
+			
+			<div id="dis2" style="display:none">
+				<div class = "my_comment">详细资料</div>
+				<div class="line">
+					<span class="my_title">性&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+					{if $gender == 0}
+					<span class="my_name"><input class="my_radio" type = "radio" name="sex" value="0"  id="gender"  checked="checked">男</span>
+					<span class="my_name"><input class="my_radio" type = "radio" name="sex" value="1" id="gender" >女</span>
+					{else}
+					<span class="my_name"><input class="my_radio" type = "radio" name="sex" value="0"  id="gender">男</span>
+					<span class="my_name"><input class="my_radio" type = "radio" name="sex" value="1" id="gender" checked="checked">女</span>
+					{/if}
+				</div>
+				<div class="line">
+					<span class="my_title">出生日期：</span>
+					<span><input class = "my_text" type = "text" id="birthday" onClick="WdatePicker()" value="{$birthday}"></span>
+				</div>
+				<div class="line">
+					<span class="my_title">手机号码：</span>
+					<span><input class = "my_text" type = "text" id="telephone" value="{$telephone}" onblur="checkTele();"></span>
+					<span id="tips-telephone" class="regist_errortip_span"></span>
+				</div>
+				<div class="line">
+					<input class = "my_button" type = "button" value = "保存" id="personInfo_btn"/>
+				</div>
+			</div>
+			<!--end of dis2 -->
+			<form action="{$photo_url}" method="post" enctype="multipart/form-data">
+			<div id="dis3" style="display:none">
+				<div class = "my_comment">头像管理</div>
+				<div class="a_line">
+					<span class="my_title">头像：</span>
+				</div>
+				<div class="my_pic">
+					<img class="my_picture" src="{$headerpicture}" style="width:160px;height:120px;" id="my_picture"/>
+				</div>
+				<div class="line1">
+					<!-- <span><input class = "my_text" type = "text" ></span> -->
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="headphoto" value="浏览" id="headphoto" multiple="multiple" /></span>
+				</div>
+				
+				<div class="line2">
+					<input class = "my_button" type = "submit" value = "上传" id="headpho_btn"/>
+					<input type="hidden" class="msg_err" id="photo_err" value="{$photo_err}" />
+				</div>
+			</div>
+			</form>
+			<!--end of dis3-->
+			
+			<div id="dis4" style="display:none">
+				<div class = "my_comment">我的记录</div>
+				<div class="comment_line">
+				<span class="my_a_comment1">文章标题</span>
+				<span class="my_a_comment1">评论内容</span>
+				<span class="my_a_comment2">评论时间</span>
+				<span class="my_a_comment2">点赞/踩压</span>
+				<span class="my_a_comment2">操作</span>
+				</div>
+				
+				<!--显示评论-->	
+				{foreach item=item from=$comlist}			
+					<div class="comment_line"  id="com_{$item.comment_id}">
+						<span class="comment_linea">{mb_substr($item.article_title, 0, 8, 'utf-8')}</span> <span
+							class="comment_lineb">{mb_substr($item.comment_content, 0, 12, 'utf-8')}</span> <span
+							class="comment_linec">{date('Y-m-d H:i',$item.comment_addtime)}</span> <span
+							class="comment_lined">{$item.comment_agrees}/{$item.comment_disagrees}</span> <span class="comment_linee"  style="cursor: pointer;color:blue" onclick=comdel({$item.comment_id},{$item.article_id})>删除</span>
+					</div>
+					 {foreachelse}
+					<div class="notes">{$not_notes}</div>
+					{/foreach}
+					<div class="bottomvar">
+						<div class="pagination">{$pageStr}</div>
+					</div>
+			</div>
+			<!--end of dis4-->
+			
+			<div id="dis5" style="display:none">
+			<form id="formcontent"   action="{$post_article}" method="post" enctype="multipart/form-data">
+					<div class = "my_comment">投递文章</div>
+					<div class="line">
+						<span class="my_title">标题：</span>
+						<span><input class = "my_a_text" type = "text" id="title"  name="articletitle"/></span>
+					</div>
+					<div class="a_line">
+						<span class="my_title">栏目：</span>
+						<span>
+							<select class="my_select" id="column" name="columnid">
+							{foreach from = $columns item = column}
+								<option value = "{$column.column_id}">------------{$column.column_name}------------</option>
+								{/foreach}
+							</select>
+						</span>
+					</div>
+					<div class="a_line">
+						<span class="my_title">图片：</span>
+						<span><input class = "my_b_text" type = "file" id="picture" name="articlepicture" multiple="multiple"></span>
+						<!-- <span><input class = "my_a_button" type="button" value="浏览"></span> -->
+					</div>
+					<div class = "show_pic">
+						<img class="my_picture" src="" style="width:160px;height:120px;" id="article_pic"/>
+					</div>
+					<div class="line">
+						<span class="my_title">导语：</span>
+						<span><textarea class="my_lead"  id="introduce" style="width:570px;height:80px;" name="articleintroduction"></textarea></span>
+					</div>
+					<div class="line">
+						<span class="my_title">内容：</span>
+						<span style="margin-left:15px;float:left">
+							<textarea name="articlecontent" style="width:570px;height:600px; background-color:#444444;" id="content" ></textarea>
+						</span>
+					</div>
+					<div class="line">
+						<input class = "my_b_button" type = "submit" value = "投递" id="uparticle-btn"/>
+						<input type="hidden" class="msg_err" id="picture_err" value="{$picture_err}" >
+					</div>
+					</form>
+			</div>
+			<!--end of dis5-->			
+		</div>
+	</div>
+	<!--end of container-->
+	</div>
+	<!--end of all-->
+</body>	
+</html>

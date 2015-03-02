@@ -1,0 +1,40 @@
+.all{
+position:absolute;
+width:100%;
+top: 200px;
+}
+
+.container{
+margin-left:auto;
+margin-right:auto;
+width:1000px;
+height:1100px;
+}
+.left{
+float:left;
+margin-left:100px;
+width:350px;
+height:500px;
+border:1px solide #f00;
+}
+.right{
+float:right;
+margin-top:80px;
+margin-right:150px;
+border:1px solide #f00;
+text-align:center;
+}
+.first_line{
+color:red;
+font-size:28px;
+font-weight:900;
+margin-bottom:20px;
+}
+.second_line{
+font-size:16px;
+margin-bottom:20px;
+}
+.third_line{
+font-size:14px;
+margin-bottom:20px;
+}

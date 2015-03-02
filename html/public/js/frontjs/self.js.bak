@@ -1,0 +1,90 @@
+/*个人中心JS
+作者：李金彦
+日期：2014-09-27
+*/
+//隐藏个人中心右边版块
+function hideDiv(oldId) {
+	oldId.css("display", "none");
+}
+//显示个人中心右边版块
+function showDiv(newId) {
+	newId.css("display","");
+}
+//标记标题
+function showTitle(newId) {
+	newId.css("font-size", "16px");
+	newId.css("color", "black");
+	newId.css("font-weight", "900");
+
+}
+//取消标记
+function hideTitle(oldId) {
+	oldId.css("font-size", "13px");
+	oldId.css("color", "gray");
+	oldId.css("font-weight", "300");
+}
+
+$(document).ready(function(){
+	$("#my_rmenu").click(function(){
+		hideDiv( $("#dis2"));
+		hideDiv( $("#dis3"));
+		hideDiv( $("#dis4"));
+		hideDiv( $("#dis5"));
+		hideTitle($("#my_menu1"));
+		hideTitle($("#my_menu2"));
+		hideTitle($("#my_menu3"));
+		hideTitle($("#my_menu4"));
+		showDiv( $("#dis1"));
+		showTitle($("#my_rmenu"));
+	});
+	$("#my_menu1").click(function(){
+		hideDiv( $("#dis1"));
+		hideDiv( $("#dis3"));
+		hideDiv( $("#dis4"));
+		hideDiv( $("#dis5"));
+		hideTitle($("#my_rmenu"));
+		hideTitle($("#my_menu2"));
+		hideTitle($("#my_menu3"));
+		hideTitle($("#my_menu4"));
+		showDiv( $("#dis2"));
+		showTitle($("#my_menu1"));
+	});
+		$("#my_menu2").click(function(){
+		hideDiv( $("#dis1"));
+		hideDiv( $("#dis2"));
+		hideDiv( $("#dis4"));
+		hideDiv( $("#dis5"));
+		hideTitle($("#my_menu1"));
+		hideTitle($("#my_rmenu"));
+		hideTitle($("#my_menu3"));
+		hideTitle($("#my_menu4"));
+		showDiv( $("#dis3"));
+		showTitle($("#my_menu2"));
+	});
+		$("#my_menu3").click(function(){
+		hideDiv( $("#dis1"));
+		hideDiv( $("#dis2"));
+		hideDiv( $("#dis3"));
+		hideDiv( $("#dis5"));
+		hideTitle($("#my_menu1"));
+		hideTitle($("#my_menu2"));
+		hideTitle($("#my_rmenu"));
+		hideTitle($("#my_menu4"));
+		showDiv( $("#dis4"));
+		showTitle($("#my_menu3"));
+	});
+		$("#my_menu4").click(function(){
+		hideDiv( $("#dis1"));
+		hideDiv( $("#dis2"));
+		hideDiv( $("#dis3"));
+		hideDiv( $("#dis4"));
+		hideTitle($("#my_menu1"));
+		hideTitle($("#my_menu2"));
+		hideTitle($("#my_menu3"));
+		hideTitle($("#my_rmenu"));
+		showDiv( $("#dis5"));
+		showTitle($("#my_menu4"));
+	});
+	
+});
+	

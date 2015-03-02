@@ -1,0 +1,27 @@
+{include file="admintemplate/header.htm"}
+<script src="./public/js/column.js" type="text/javascript"></script>
+<div class="main">
+	<table cellspacing="0" width="100%">
+		<tr class="title">
+			<th>栏目ID</th>
+			<th>父栏目ID</th>
+			<th>栏目名</th>
+			<th>操作</th>
+		</tr>
+		{foreach item=column from=$columnlist}
+			<tr id="del{$column.column_id}">
+				<td>{$column.column_id}</td>
+				<td>{$column.column_pid}</td>
+				<td>{$column.column_name}</td>
+				<td colspan="2">
+					<a href="index.php?mod=column&act=mod&column_id={$column.column_id}" id="updatecolumn">编辑</a>
+					<a href="javascript:void(0)" onclick="return columnDel('{$column.column_name}',{$column.column_id})">删除</a>
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+	<div class="bottomvar">
+		<div class="pagination">{$pageStr}</div>
+	</div>
+</div>
+{include file="admintemplate/footer.htm"}

@@ -1,0 +1,193 @@
+﻿.allnew_div {
+	margin-bottom: 20px;
+	width: 720px;
+	float: left;
+}
+
+.allnew_div .new_title_div {
+	width: 710px;
+	height: 40px;
+	padding-top: 10px;
+	padding-left: 10px;
+	font-family: "黑体";
+	font-size: 24px;
+	float: left;
+}
+
+.allnew_div .new_writer_div {
+	width: 150px;
+	height: 30px;
+	padding-left: 10px;
+	font-size: 13px;
+	float: left;
+}
+
+.allnew_div .new_agree_div {
+	position: relative;
+	margin-top: 10px;
+	width: 560px;
+	height: 20px;
+	text-align: right;
+	color: #0099FF;
+	font-size: 13px;
+	font-weight: bold;
+	float: right;
+}
+
+.allnew_div .new_agree_div .new_agree_item_div {
+	position: absolute;
+	top: 0px;
+	left: 310px;
+}
+
+.allnew_div .new_agree_div .new_disagree_item_div {
+	position: absolute;
+	top: 0px;
+	left: 410px;
+}
+
+.allnew_div .new_agree_div .new_disagree_item_div a {
+	cursor: pointer;
+}
+
+.allnew_div .new_agree_div .new_agree_item_div a {
+	cursor: pointer;
+}
+
+.allnew_div .new_agree_div .new_agree_item_div a:hover, .allnew_div .new_agree_div .new_disagree_item_div a:hover {
+	color: #F78543;
+}
+
+.allnew_div .new_hr_div {
+	width: 100%;
+	float: left;
+}
+
+.allnew_div .new_content_div {
+	width: 720px;
+	margin-top: 10px;
+	font-size: 16px;
+	float: left;
+}
+
+.allnew_div .new_content_div span {
+	width: 100%;
+	text-align: right;
+	font-size: 13px;
+	float: left;
+}
+
+.allnew_div .new_content_div span a:link {
+	color: blue;
+}
+
+.allnew_div .new_content_div span a:visited {
+	color: blue;
+}
+
+.allnew_div .new_content_div span a:hover {
+	color: red;
+}
+
+.allnew_div .new_aboutreading_div {
+	width: 100%;
+	margin-top: 40px;
+	font-size: 16px;
+	line-height: 30px;
+	float: left;
+}
+
+.allnew_div .new_aboutreading_div .new_aboutreading_name_span {
+	font-weight: bold;
+	float: left;
+}
+
+.allnew_div .new_aboutreading_div .new_aboutreading_list_span {
+	float: left;
+}
+
+.allnew_div .new_comment_div {
+	width: 100%;
+	margin-top: 50px;
+	float: left;
+}
+
+.allnew_div .new_comment_div .new_comment_name_span {
+	font-weight: bold;
+	float: left;
+}
+
+.allnew_div .new_comment_div .new_comment_number_span {
+	font-size: 13px;
+	float: right;
+}
+
+.allnew_div .new_comment_div .new_comment_frame_div {
+	margin-top: 10px;
+	width: 100%;
+	height: 310px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: blue;
+	float: left;
+}
+
+.allnew_div .new_comment_div .new_comment_frame_div .new_comment_input_div {
+	padding-top: 10px;
+	padding-left: 15px;
+	width: 705px;
+	height: 240px;
+	float: left;
+}
+
+.allnew_div .new_comment_div .new_comment_frame_div .new_comment_input_div form textarea{
+	width: 680px;
+	height: 230px;
+	resize: none;
+	float: left;
+}
+
+.allnew_div .new_comment_div .new_comment_frame_div .new_comment_hr_div {
+	margin-left: 15px;
+	width: 95%;
+	float: left;
+}
+
+.allnew_div .new_comment_div .new_comment_frame_div .new_comment_btn_div {
+	margin-right: 20px;
+	width: 63px;
+	height: 25px;
+	color: white;
+	padding-top: 8px;
+	padding-left: 37px;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 5px;
+	background-color: #3399FF;
+	float: right;
+}
+.new_comment_hr_div{
+	clear:left;	
+}
+
+.allnew_div .new_comment_div .new_comment_frame_div .new_comment_btn_div {
+	margin-right: 20px;
+	width: 63px;
+	height: 25px;
+	color: white;
+	padding-top: 8px;
+	padding-left: 37px;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 5px;
+	background-color: #3399FF;
+	float: right;
+}
+
+.new_comment_msg{
+	margin-top:7px;
+	float:right;
+	font-size:16px;
+	color:red;
+	font-family: 微软雅黑;
+}
