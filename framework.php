@@ -135,7 +135,6 @@ class Core {
      */
     static public function appException($e) {
 		echo $e;
-        //halt($e->__toString());
     }
 
     /**
@@ -150,19 +149,15 @@ class Core {
      +----------------------------------------------------------
      */
     static public function appError($errno, $errstr, $errfile, $errline) {
-		//echo $errstr;
-		//exit;
     	switch ($errno) {
 			case E_WARNING:
 				$errorStr = "[$errno] $errstr ".basename($errfile)." 第 $errline 行.";
 				if(C('LOG_RECORD')) Log::write($errorStr,Log::ERR);
-				//echo ($errorStr)."<br>"."<br>";
 				break;
 			case E_ERROR:
 			case E_USER_ERROR:
 				$errorStr = "[$errno] $errstr ".basename($errfile)." 第 $errline 行.";
 				if(C('LOG_RECORD')) Log::write($errorStr,Log::ERR);
-				//echo($errorStr)."<br>"."<br>";
 				break;
 			case E_STRICT:
 			case E_USER_WARNING:
