@@ -8,12 +8,12 @@ Core::getInstance();
 $mod	=	isset($_REQUEST['mod']) ? $_REQUEST['mod']: "";
 $act	=	isset($_REQUEST['act']) ? $_REQUEST['act']: "";
 if(empty($mod)){
-	redirect_to(WEB_URL."index.php?mod=article&act=index"); // 跳转到登陆页
+	redirect_to(WEB_PATH."index.php?mod=article&act=index"); // 跳转到登陆页
 	exit;
 }
 
 if(empty($act)){
-	redirect_to(WEB_URL."index.php?mod=article&act=index");
+	redirect_to(WEB_PATH."index.php?mod=article&act=index");
 	exit;
 }
 //初始化memcache类

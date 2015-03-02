@@ -8,7 +8,6 @@ class Core {
 
 	private function __construct(){
 		//-----------需要页面显示调试信息,	注释掉下面两行即可---
-		
 		//-------------------------------------------------------
 		set_error_handler(array("Core",'appError'));	
 		set_exception_handler(array("Core",'appException'));
@@ -17,32 +16,24 @@ class Core {
 			@set_magic_quotes_runtime (0);
 			define('MAGIC_QUOTES_GPC',get_magic_quotes_gpc()?True:False);
 		}
-
         if(!defined('WEB_PATH')){
 			define("WEB_PATH", "/data/web/news.valsun.cn/");
 		}
 		include	WEB_PATH."lib/common.php";	//此文件定义了C函数
-
 		//加载全局配置信息
 		C(include WEB_PATH.'conf/common.php');
 		include	WEB_PATH."lib/authuser.class.php";	//新鉴权
 		include	WEB_PATH."lib/log.php";			//日志类
 		include	WEB_PATH."lib/page.php";		//分页类
-
 		//加载数据接口层及所需支撑
 		include	WEB_PATH."lib/service/http.php";	//网络接口	
 		include	WEB_PATH."lib/functions.php"; //公共方法
-		include	WEB_PATH."lib/opensys_functions.php"; //开放系统方法
 		include	WEB_PATH."lib/cache/cache.php";		//memcache
-
 		//加载语言包
 		$lang	=	WEB_PATH."lang/".C("LANG").".php";		//memcache
-		
 		if(file_exists($lang)){
-			//echo $lang;
 			C(include $lang);
 		}
-		
 		if(C("DATAGATE") == "db"){
 			$db	=	C("DB_TYPE");
 			include	WEB_PATH."lib/db/".$db.".php";	//db直连
@@ -58,11 +49,8 @@ class Core {
 				//.......
 			}
 		}
-		
 		//自动加载类
 		 spl_autoload_register(array('Core', 'autoload'));
-		
-
 	}
 	
 	//自动加载实现
@@ -99,7 +87,6 @@ class Core {
 		}
 	}
 	
-	
 	public static function getFile($fileName,$path){ 
 		if ($handle = @opendir($path)) { 
 		    while(false !== ($file = @readdir($handle))) { 	    	
@@ -115,7 +102,6 @@ class Core {
 		@closedir($handle);
 	}
 	
-	
 	private function __clone() {}
 	
 	//单实例
@@ -125,7 +111,6 @@ class Core {
         }
         return self::$_instance;
     }
-
 
     /**
      +----------------------------------------------------------

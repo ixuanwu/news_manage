@@ -7,7 +7,6 @@ Core::getInstance();
 
 $mod	=	isset($_REQUEST['mod']) ? $_REQUEST['mod']: "";
 $act	=	isset($_REQUEST['act']) ? $_REQUEST['act']: "";
-//$token	=	trim($_REQUEST['token']);
 if(empty($mod)){
 	echo "empty mod";
 	exit;
