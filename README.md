@@ -1,2 +1,2 @@
-# news.valsun.cn
+# news.manage
 graduation project
