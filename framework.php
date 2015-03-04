@@ -17,18 +17,17 @@ class Core {
 			define('MAGIC_QUOTES_GPC',get_magic_quotes_gpc()?True:False);
 		}
         if(!defined('WEB_PATH')){
-			define("WEB_PATH", "/data/web/news.valsun.cn/");
+			define("WEB_PATH", "E:/PHP/news_manage/");
 		}
 		include	WEB_PATH."lib/common.php";	//此文件定义了C函数
 		//加载全局配置信息
 		C(include WEB_PATH.'conf/common.php');
-		include	WEB_PATH."lib/authuser.class.php";	//新鉴权
 		include	WEB_PATH."lib/log.php";			//日志类
 		include	WEB_PATH."lib/page.php";		//分页类
 		//加载数据接口层及所需支撑
 		include	WEB_PATH."lib/service/http.php";	//网络接口	
 		include	WEB_PATH."lib/functions.php"; //公共方法
-		include	WEB_PATH."lib/cache/cache.php";		//memcache
+		include	WEB_PATH."lib/cache/cache.php";	//memcache
 		//加载语言包
 		$lang	=	WEB_PATH."lang/".C("LANG").".php";		//memcache
 		if(file_exists($lang)){

@@ -1,4 +1,11 @@
 <?php
+/**
+ * 	类名：UserView
+ *	功能：个人中心相关视图层
+ *	版本： 1.0
+ *	日期：2014-11-26
+ *	作者：蒋和超
+ */
 class UserView extends BaseView{
 	
 	/**

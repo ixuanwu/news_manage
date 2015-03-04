@@ -2,9 +2,8 @@
 /**
  * 类名：ArticleModel
  * 功能：文章表管理
- * 日期：2014-09-25
- * 作者：李文婷
- *
+ * 日期：2014-11-25
+ * 作者：蒋和超
  */
 class ArticleModel {
 	private static $dbConn;

@@ -1,8 +1,3 @@
-/*********公共JS*******
-auth : gyj
-date : 2013-10-30
-*/
-
 //返回时间条件
 function timeStr() {
 	var times 	   = $.trim($("#times").val());

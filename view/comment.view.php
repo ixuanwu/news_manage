@@ -1,6 +1,12 @@
 <?php
+/**
+ * 	类名：CommentView
+ *	功能：评论管理相关视图层
+ *	版本： 1.0
+ *	日期：2014-11-26
+ *	作者：蒋和超
+ */
 class CommentView extends BaseView{
-/**start 登录后主页显示 addby杨友能**/
 	public function view_showLogin(){
 		$this->smarty->assign("temp", "0");
 		if(isset($_SESSION['USER_NAME'])){

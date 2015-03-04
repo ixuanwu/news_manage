@@ -1,6 +1,13 @@
 <?php
+/**
+ * 	类名：ArticleView	
+ *	功能：管理员登录、添加相关视图层
+ *	版本： 1.0
+ *	日期：2014-11-26
+ *	作者：蒋和超
+ */
+
 class ArticleView extends BaseView {
-/**start 登录后主页显示 addby杨友能**/
 	public function view_showLogin(){
 		$this->smarty->assign("temp", "0");
 		if(isset($_SESSION['USER_NAME'])){

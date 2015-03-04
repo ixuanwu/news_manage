@@ -3,8 +3,8 @@
  * 类名：UserModel
  * 功能：获取用户的信息，与数据库交互
  * 版本：1.0
- * 日期：2014-9-25
- * 作者：杨友能
+ * 日期：2014-11-25
+ * 作者：蒋和超
  */
 class UserModel {
 	private static $dbConn;
@@ -35,7 +35,8 @@ class UserModel {
 		}
 		return self::$_instance;
 	}
-	/****
+	
+	/**
 	 * 函数说明：获取数据库连接
 	 */
 	private static function initDB(){
@@ -44,7 +45,7 @@ class UserModel {
 		self::$dbConn->query("set names 'utf8'");
 	}
 	
-	/****
+	/**
 	 * 函数说明：用户登录数据获取
 	 * @param string $username	登录用户名
 	 * @param string $password	登录密码
@@ -65,7 +66,7 @@ class UserModel {
 		return $res;
 	}
 	
-	/****
+	/**
 	 * 函数说明：登录成功，修改登录时间和IP
 	 * @param string $userid	用户id
 	 * @param string $loginip	用户ip
@@ -84,7 +85,8 @@ class UserModel {
 		}
 		return true;
 	}
-	/****
+	
+	/**
 	 * 函数说明：添加用户
 	 * @param stirng $where	用户信息
 	 * @param stirng $filed	用户信息字段
@@ -111,11 +113,11 @@ class UserModel {
 		return $res;
 	}
 	
-	/****
+	/**
 	 * 函数说明：删除用户
-	* @param string $sql	sql语句
-	* @return boolean
-	*/
+	 * @param string $sql	sql语句
+	 * @return boolean
+	 */
 	public function mod_delUserById($sql){
 		self::initDB();
 		$query	= self::$dbConn->query($sql);
@@ -125,11 +127,11 @@ class UserModel {
 		return true;
 	}
 	
-	/****
-	* 函数说明：删除每个表中与用户信息有关的记录
-	* @param string $userid	用户ID
-	* @return boolean
-	*/
+	/**
+	 * 函数说明：删除每个表中与用户信息有关的记录
+	 * @param string $userid	用户ID
+	 * @return boolean
+	 */
 	public function mod_delUser($userid){
 		$sql	= "UPDATE news_user 		SET IS_DELETE = 1 WHERE USER_ID = $userid";	//删除用户表的里记录
 		$que1	= self::mod_delUserById($sql);
@@ -145,11 +147,11 @@ class UserModel {
 		return false;
 	}
 	
-	/****
+	/**
 	 * 函数说明：更新用户的信息
-	* @param string $newInfo	用户信息字段与值
-	* @return boolean
-	*/
+	 * @param string $newInfo	用户信息字段与值
+	 * @return boolean
+	 */
 	public function mod_updUserInfo($newInfo){
 		self::initDB();
 		$sql	= 	"UPDATE news_user SET $newInfo";
@@ -160,12 +162,12 @@ class UserModel {
 		return true;
 	}
 	
-	/****
-	* 函数说明：修改用户的密码
-	* @param string $userid			用户id
-	* @param string $newpassw		新密码
-	* @return boolean
-	*/
+	/**
+	 * 函数说明：修改用户的密码
+	 * @param string $userid	用户id
+	 * @param string $newpassw	新密码
+	 * @return boolean
+	 */
 	public function mod_updPassw($userid, $newpassw){
 		self::initDB();
 		$sql	= 	"UPDATE news_user  
@@ -179,7 +181,7 @@ class UserModel {
 		}
 	}
 	
-	/****
+	/**
 	 * 函数说明：判断用户名密码是否存在
 	 * @param string $userid	用户ID
 	 * @param string $oldpassw	旧密码
@@ -197,7 +199,7 @@ class UserModel {
 		return false;
 	} 
 	
-	/*****
+	/**
 	 * 函数说明：获取普通用户的个数
 	 * @return boolean|int
 	 * modified By 蒋和超 添加获取普通用户条件
@@ -214,7 +216,7 @@ class UserModel {
 		}
 	}
 	
-	/****
+	/**
 	 * 函数说明：分页获取用户信息
 	 * @param int $page			当前页数
 	 * @param int $pagenum		每页显示的条数
@@ -231,7 +233,7 @@ class UserModel {
 		return self::$dbConn->fetch_array_all($query);
 	}
 	
-	/****
+	/**
 	 * 函数说明：验证用户名，电话，邮箱是否注册过
 	 * @param string $where	用户信息
 	 * @return boolean
@@ -247,10 +249,6 @@ class UserModel {
 			return false;
 		}
 	}
-	
-	/**
-	 * 添加获取
-	 */
 }
 
 ?>

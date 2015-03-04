@@ -17,7 +17,7 @@ return  array(
 	"DB_TYPE"		=>	"mysql",	//	mysql	mssql	postsql	mongodb
 	//mysql db	配置
 	"DB_CONFIG"		=>	array(
-		"master1"	=>	array("192.168.200.199","root","123456","3306","news_manage")//主DB
+		"master1"	=>	array("localhost","root","123456","3306","news_manage")//主DB
 	),
 	"CACHE_CONFIG"	=>	array(
 		array("192.168.200.198","11211"),

@@ -3,8 +3,8 @@
  * 类名：UserAct
  * 功能：获取用户的信息（用户登录，修改，显示信息）
  * 版本：1.0
- * 日期：2014-9-25
- * 作者：杨友能
+ * 日期：2014-11-25
+ * 作者：蒋和超
  */
 
 if(!isset($_SESSION)){
@@ -27,7 +27,7 @@ class UserAct {
 		return self::$_instance;
 	} 
 	
-	/****
+	/**
 	 * 函数说明：判断值是否为空
 	 * @param string $name
 	 * @param string $msg
@@ -38,7 +38,7 @@ class UserAct {
 		}
 	}
 	
-	/****
+	/**
 	 * 函数说明：匹配正则表达式-邮箱
 	 * @param string $email
 	 * @return boolean
@@ -57,11 +57,11 @@ class UserAct {
 		return 'email_err';
 	}
 	
-	/****
-	* 函数说明：匹配正则表达式-用户名
-	* @param string $uname
-	* @return boolean
-	*/
+	/**
+	 * 函数说明：匹配正则表达式-用户名
+	 * @param string $uname
+	 * @return boolean
+	 */
 	private static function checkName($uname){
 		$pattern	= "/^[a-zA-Z_]{1,10}$/";		//用户名正则表达式
 		if(preg_match($pattern, $uname)){
@@ -76,11 +76,11 @@ class UserAct {
 		return 'name_err';
 	}
 	
-	/****
-	* 函数说明：匹配正则表达式-电话号码
-	* @param string $tel
-	* @return boolean
-	*/
+	/**
+	 * 函数说明：匹配正则表达式-电话号码
+	 * @param string $tel
+	 * @return boolean
+	 */
 	private static function checkTel($tel){
 		$pattern	= "/^(13[0-9]|15[0|3|6|7|8|9]|18[2|7|8|9])\d{8}$/";
 		if(preg_match($pattern, $tel)){
@@ -96,11 +96,11 @@ class UserAct {
 		return 'tel_err';
 	}
 	
-	/****
-	* 函数说明：匹配正则表达式-密码
-	* @param string $uname
-	* @return boolean
-	*/
+	/**
+	 * 函数说明：匹配正则表达式-密码
+	 * @param string $uname
+	 * @return boolean
+	 */
 	private static function checkPassw($password){
 		$pattern	= "/^[a-zA-Z_@][a-zA-Z_@0-9]{7,17}$/";
 		if(preg_match($pattern, $password)){
@@ -113,7 +113,7 @@ class UserAct {
 		return  MD5($password);
 	}
 	
-	/****
+	/**
 	 * 函数说明：用户登录逻辑
 	 * @return boolean
 	 */
@@ -150,7 +150,7 @@ class UserAct {
 		return false;
 	}
 
-	/****
+	/**
 	 * 函数说明：验证用户名，邮箱，电话号码是否已注册
 	 * @return string
 	 */
@@ -171,14 +171,15 @@ class UserAct {
 		return UserModel::mod_getParam($where);  // true 为无记录  false 有记录
 	}
 	
-	/****
+	/**
 	 * 函数说明：获取用户的数量
 	 * @return Ambigous <boolean, unknown>
 	 */
 	public function act_userCount(){
 		return UserModel::mod_userCount();
 	}
-	/****
+	
+	/**
 	 * 函数说明：注册用户信息
 	 * @return string
 	 */
@@ -214,7 +215,7 @@ class UserAct {
 		}
 	}
 	
-	/****
+	/**
 	 * 函数说明：删除用户信息
 	 * @return string
 	 */
@@ -226,7 +227,7 @@ class UserAct {
 		return UserModel::mod_delUser($userid);   //返回true false
 	}
 	
-	/****
+	/** 
 	 * 函数说明：更新用户信息
 	 * @return string
 	 */
@@ -283,10 +284,10 @@ class UserAct {
 		
 	}
 	
-	/****
-	* 函数说明：用户更新用户密码
-	* @return string
-	*/
+	/**
+	 * 函数说明：用户更新用户密码
+	 * @return string
+	 */
 	public function act_updPassw(){
 		self::isEmpty('oldpassw', "旧密码为空！");
 		self::isEmpty('newpassw', "新密码为空！");
@@ -311,7 +312,7 @@ class UserAct {
 		}
 	}
 	
-	/****
+	/**
 	* 函数说明：管理员更新用户密码
 	* @return string
 	*/
@@ -331,17 +332,17 @@ class UserAct {
 		}
 	}
 	
-	/****
+	/**
 	 * 函数说明：根据页数，获取用户的信息
-	* @param int $page		当前页数
-	* @param int $pagenum	每页显示的数量
-	* @return array
-	*/
+	 * @param int $page		当前页数
+	 * @param int $pagenum	每页显示的数量
+	 * @return array
+	 */
 	public function act_getAllUserInfo($page, $pagenum){
 		return  UserModel::mod_getAllUserInfo();
 	}
 	
-	/****
+	/**
 	 * UserAct::act_getCommentList
 	 * 函数说明：获取评论数据
 	 * @return array
@@ -359,5 +360,4 @@ class UserAct {
 		return  UserModel::getInstance()->mod_getUserInfo($userId);
 	}
 }
-
 ?>

@@ -1,6 +1,10 @@
 <?php
 /**
- * 
+ * 	类名：ColumnAct
+ *	功能：新闻类别动作处理层
+ *	版本： 1.0
+ *	日期：2015-1-26
+ *	作者：蒋和超
  */
 class ColumnAct{
     static $errCode;

@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * 	类名：AdminAct
+ *	功能：新闻文章管理动作处理层
+ *	版本： 1.0
+ *	日期：2015-1-26
+ *	作者：蒋和超
+ */
 class ArticleAct {
 	static $errCode	  = 0;
 	static $errMsg	  = '';

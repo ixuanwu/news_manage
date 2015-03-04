@@ -2,8 +2,8 @@
 /**
  * 类名：ColumnView
  * 功能：栏目视图层
- * 版本：2014-09-26
- * 作者：张高鹏
+ * 版本：2014-11-26
+ * 作者：蒋和超
  */
 class ColumnView extends BaseView{
     function view_index(){

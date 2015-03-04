@@ -1,6 +1,9 @@
 <?php
 /**
- * 
+ * 类名：ColumnModel
+ * 功能：新闻类别栏目管理
+ * 日期：2014-11-25
+ * 作者：蒋和超
  */
 class ColumnModel{
     static $errCode;

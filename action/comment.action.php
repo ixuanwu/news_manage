@@ -2,8 +2,8 @@
 /**
  * 类名：CommentAct
  * 功能：管理Comment评论信息
- * 版本：2014-09-25
- * @author 侯炼
+ * 版本：2015-01-25
+ * 作者: 蒋和超
  */
 class CommentAct {
 	/**
