@@ -1,24 +1,27 @@
 {include file="admintemplate/header.htm"}
 </head>
 <body>
+<div class="title">重置用户{$userid}的密码</div>
 <form>
+<div class="div_form">
 	<div class="cont">
-		<div class="div_input">
-			<div class="name_info">新密码：</div>
+		<div class="uinArea">
+			<label class="input-tips">新的密码：</label>
 			<input type="hidden" id="userid" value="{$userid}">
-			<input type="password" name ="newpassw" id="newpassw"  class="input" onblur="checkNewpassw()" />
+			<input type="password" name ="newpassw" id="newpassw"  class="inputOuter" onblur="checkNewpassw()" />
 			<span id="tips-newpassw" class="err_msg"></span>
 		</div>
-		<div class="div_input">
-			<div class="name_info">确认密码：</div>
-			<input type="password" name ="renewpassw" id="renewpassw"  class="input" onblur="checkRenewPassw()" />
+		<div class="uinArea">
+			<label class="input-tips">确认密码：</label>
+			<input type="password" name ="renewpassw" id="renewpassw"  class="inputOuter" onblur="checkRenewPassw()" />
 			<span id="tips-renewpassw" class="err_msg"></span>
 		</div>
 		<div class="all_btn">
-			<input type="submit" id="revpassw-btn" value="修改" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="重置" />
+			<input type="submit" id="revpassw-btn" value="修改" class="button_blue"/>
+			<input type="reset" value="重置" class="button_blue"/>
 		</div>
 	</div>
+</div>
 </form>
 </body>
 {include file="admintemplate/footer.htm"}

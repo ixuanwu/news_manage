@@ -60,7 +60,7 @@ class BaseView{
 		return FALSE;
 	}
 	
-		/**
+	/**
 	 * 检测相应的模块是否需要验证
 	 * @param  $mod 
 	 * @param  $act

@@ -2,33 +2,36 @@
 {include file="admintemplate/header.htm"}
 </head>
 <body>
+<div class="title">新用户信息</div>
+<div class="div_form">
 <form>
 	<div class="cont">
-		<div class="div_input">
-			<span class="name_info">用户名：</span>
-			<input type="text" name ="ausername" id="ausername" class="input" onblur="checkName()" />
+		<div class="uinArea">
+			<label class="input-tips">用户昵称：</label>
+			<input type="text" name ="ausername" id="ausername" class="inputOuter" onblur="checkName()" />
 			<span id="tips-ausername" class="err_msg"></span>
 		</div>
-		<div class="div_input">
-			<span class="name_info">密码：</span>
-			<input type="password" name ="apassword" id="apassword"  class="input" onblur="checkPassw()" />
+		<div class="uinArea">
+			<label class="input-tips">输入密码：</label>
+			<input type="password" name ="apassword" id="apassword"  class="inputOuter" onblur="checkPassw()" />
 			<span id="tips-apassword" class="err_msg"></span>
 		</div>
-		<div class="div_input">
-			<span class="name_info">确认密码：</span>
-			<input type="password" name ="arepassw" id="arepassw"  class="input" onblur="checkRepassw()" />
+		<div class="uinArea">
+			<label class="input-tips">确认密码：</label>
+			<input type="password" name ="arepassw" id="arepassw"  class="inputOuter" onblur="checkRepassw()" />
 			<span id="tips-arepassw" class="err_msg"></span>
 			</div>
-		<div class="div_input">
-			<span class="name_info">邮箱：</span>
-			<input type="text" name ="aemail" id="aemail"  class="input" onblur="checkEmail()" />
+		<div class="uinArea">
+			<label class="input-tips">电子邮箱：</label>
+			<input type="text" name ="aemail" id="aemail"  class="inputOuter" onblur="checkEmail()" />
 			<span id="tips-aemail" class="err_msg"></span>
 		</div>
 		<div class="all_btn">
-			<input type="submit" id="addadmin_btn" value="添加" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="重置" />
+			<input type="submit" id="addadmin_btn" value="添加" class="button_blue"/>
+			<input type="reset" value="重置" class="button_blue"/>
 		</div>
 	</div>
 </form>
+</div>
 </body>
 {include file="admintemplate/footer.htm"}

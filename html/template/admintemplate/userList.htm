@@ -21,18 +21,18 @@
 				<td>{$user.user_id}</td>
 				<td>{$user.user_name}</td>
 				<td>{$user.user_password}</td>
-				<td>{if $user.user_gender==0}男{/if}{if $user.user_gender==1}女{/if}</td>
-				<td>{$user.user_telephone}</td>
-				<td>{$user.user_birthday}</td>
+				<td>{if $user.user_gender==0}男{else if $user.user_gender==1}女{else}暂无{/if}</td>
+				<td>{if empty($user.user_telephone)}暂无{else}{$user.user_telephone}{/if}</td>
+				<td>{if empty($user.user_birthday)}暂无{else}{date("Y-m-d",$user.user_birthday)}{/if}</td>
 				<td>{date("Y-m-d H:i:s",$user.user_addtime)}</td>
 				<td>{date("Y-m-d H:i:s",$user.user_logintime)}</td>
 				<td>{$user.user_loginip}</td>
 				<td><img src={$user.user_headphoto} width="20px" height="16px"></td>
-				<td>{$user.user_email}</td>
-				<td>{if $user.user_permission==0}普通用户组{/if}</td>
+				<td>{if empty($user.user_email)}暂无{else}{$user.user_email}{/if}</td>
+				<td>{if $user.user_permission==0}普通用户组{else if $user.user_permission==1}管理员{else}未知权限{/if}</td>
 				<td colspan="2">
-					<a href="index.php?mod=admin&act=updateUser&userid={$user.user_id}" id="updateuser">编辑</a>
-					<a href="javascript:void(0)" onclick="return checkDel('{$user.user_name}',{$user.user_id})">删除</a>
+					<a href="index.php?mod=admin&act=updateUser&userid={$user.user_id}" id="updateuser"><img src='../public/img/icn_edit.png' title="编辑"></a>
+					<a href="javascript:void(0)" onclick="return checkDel('{$user.user_name}',{$user.user_id})"><img src='../public/img/icn_trash.png' title="删除"></a>
 				</td>
 			</tr>
 		{/foreach}

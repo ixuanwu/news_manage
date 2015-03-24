@@ -1,33 +1,30 @@
 {include file="admintemplate/header.htm"}
 <script src="./public/js/containspecial.js"></script>
-<div class="main">
-    <div class="userlogin">
-	   <table cellspacing="0" width="100%">
-            <tr>
-                <td>栏目ID</td>
-                <td>{$column.column_id}</td>
-            <tr>
-                <td>栏目名</td>
-                <td><input type="text" id="column_name" name="column_name" value="{$column.column_name}" /></td>
-                <td><p style="font-size:12px; color:#F00; float:right;" id="tips-name"></p></td>
-            </tr>
-			     <td>父栏目</td>
-                 <td>
-                    <select id="column_pid">
-                        <option value="0">顶层栏目</option>
-                        {foreach $columnlist as $item}
-                            <option value="{$item.column_id}" {if $item.column_id == $column.column_pid} selected="true" {/if} >{$item.column_name}</option>
-                        {/foreach}
-                    </select>
-                 </td>
-                <td><p style="font-size:12px; color:#F00; float:right;" id="tips-pid"></p></td>
-            </tr>
-            <tr>
-                <td>
-                    <button id="mod">修改</button>
-                </td>
-            </tr>
-	   </table>
+<div class="title">修改栏目名称</div>
+<div class="div_form">
+    <div class="cont">
+   		<div class="uinArea">
+   			<label class="input-tips">栏目ID</label>
+   			<input type="text" name="columnId" value="{$column.column_id}" class="inputOuter" readonly="readonly" disabled="disabled"/>
+        </div>
+         <div class="uinArea">
+                <label class="input-tips">栏目名:</label>
+                <input type="text" id="column_name" name="column_name" class="inputOuter" value="{$column.column_name}" />
+                <span class="err_msg" id="tips-name"></span>
+         </div>
+         <div class="uinArea">
+        	 <label class="input-tips">父栏目</label>
+             <select id="column_pid" class="inputOuter" style="height:38px;">
+                   <option value="0">顶层栏目</option>
+                     {foreach $columnlist as $item}
+                        <option value="{$item.column_id}" {if $item.column_id == $column.column_pid} selected="true" {/if} >{$item.column_name}</option>
+                     {/foreach}
+             </select>
+             <span class="err_msg" id="tips-pid"></span> 
+         </div>
+         <div class="all_btn">
+               <button id="mod" class="button_blue" style="width:180px;height:50px;">修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改</button>
+         </div>
     </div>
 </div>
 <script>

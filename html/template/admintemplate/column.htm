@@ -14,8 +14,8 @@
 				<td>{$column.column_pid}</td>
 				<td>{$column.column_name}</td>
 				<td colspan="2">
-					<a href="index.php?mod=column&act=mod&column_id={$column.column_id}" id="updatecolumn">编辑</a>
-					<a href="javascript:void(0)" onclick="return columnDel('{$column.column_name}',{$column.column_id})">删除</a>
+					<a href="index.php?mod=column&act=mod&column_id={$column.column_id}" id="updatecolumn"><img src='../public/img/icn_edit.png' title="编辑"></a>
+					<a href="javascript:void(0)" onclick="return columnDel('{$column.column_name}',{$column.column_id})"><img src='../public/img/icn_trash.png' title="删除"></a>
 				</td>
 			</tr>
 		{/foreach}

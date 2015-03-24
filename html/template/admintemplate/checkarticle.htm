@@ -123,33 +123,30 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript"  src="./public/js/checkjs/uploadarticle.js"></script>
 <div class="main" style="margin-top: 3px">
-<div class="twovar {if in_array($mod,array('shippingAddress2'))}nothing-twovar{/if}" style="background-color: gray">
+<div class="twovar {if in_array($mod,array('shippingAddress2'))}nothing-twovar{/if}">
   <ul>
   		{foreach $lcolumnlist as $key => $column}
-			<li><a style="border-color: gray" href="index.php?mod=article&act=getArticle&columnid={$column.column_id}" {if $columnid== {$column.column_id} }class = "cho"{/if}>{$column.column_name}</a></li>
+			<li><a href="index.php?mod=article&act=getArticle&columnid={$column.column_id}" {if $columnid== {$column.column_id} }class = "cho"{/if}>{$column.column_name}</a></li>
 		{/foreach}
-		<li><a id="checkArticle" style="border-color: gray" href="index.php?mod=article&act=getCheckArticle&columnpid={$columnpid}" {if $smarty.get.act == 'getCheckArticle'}class = "cho"{/if}>未审核文章</a></li>
+		<li><a id="checkArticle" href="index.php?mod=article&act=getCheckArticle&columnpid={$columnpid}" {if $smarty.get.act == 'getCheckArticle'}class = "cho"{/if}>未审核文章</a></li>
   </ul>
 </div>
 <div id="dis1">
 	<table cellspacing="0" width="100%">
 	<tr class="title">
-			<th>文章ID</th>
-			<th>文章标题</th>
-			<th>文章作者</th>
-			<th>文章图片</th>
-			<th>文章导语</th>
-			<th>文章添加时间</th>
+			<th>标题</th>
+			<th>作者</th>
+			<th>图片</th>
+			<th>导语</th>
+			<th>添加时间</th>
 			<th>操作</th>
-			<th></th>
 	</tr>
 		{foreach $newslist as $key=>$newsinfo}
 			<tr>
-				<td>{$newsinfo.article_id}</td>
-				<td>{$newsinfo.article_title}</td>
+				<td style="width:120px">{$newsinfo.article_title}</td>
 				<td>{$newsinfo.article_author}</td>
 				<td><img src={$newsinfo.article_picture} width="20px" height="16px"></td>
-				<td>{$newsinfo.article_introduction}</td>
+				<td style="width:180px">{$newsinfo.article_introduction}</td>
 				<td>{date("Y-m-d H:i:s",$newsinfo.article_addtime)}</td>
 				<td colspan="4">
 					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="editArticle">详情<input id="detailarticle{$newsinfo.article_id}" type="hidden" value="{$newsinfo.article_id}" /></a>
@@ -157,10 +154,9 @@ $(document).ready(function(){
 					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="acceptArticle">通过</a>
 					<a href="javascript:void(0)" id="{$newsinfo.article_id}" service="deleteArticle">删除</a>
 				</td>
-				<td></td>
 			</tr>
 		{/foreach}
-</table>
+	</table>
 <div class="bottomvar">
 		<div class="pagination">{$pageStr}</div>
 	</div>

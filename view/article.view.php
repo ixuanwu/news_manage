@@ -8,6 +8,7 @@
  */
 
 class ArticleView extends BaseView {
+	
 	public function view_showLogin(){
 		$this->smarty->assign("temp", "0");
 		if(isset($_SESSION['USER_NAME'])){
@@ -19,8 +20,8 @@ class ArticleView extends BaseView {
 			$this->smarty->assign("logout", "index.php?mod=public&act=logout");
 		}
 	}
-	/**登录后主页显示 end**/
 	
+	/**登录后主页显示 end**/
 	public function view_index() {
 		self::view_showLogin();
 		$articlesingle	= ArticleAct::getInstance();
@@ -76,13 +77,10 @@ class ArticleView extends BaseView {
 		$soncolunm			= $columnsingle->act_getColumnList($columnpid);
 		$articlecolumn		= array_slice($colunmlist,0,9);
 		$perpage 	 		= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 9;
-		
 		$columnleftnews 	= $articlesingle->getNewsListByColumn($soncolunm[0]['column_id'], 'article_addtime', 5);
 		$columnrightnews 	= $articlesingle->getNewsListByColumn($soncolunm[1]['column_id'], 'article_addtime', 7);
-
 		$articlenum			= $articlesingle->getArticleNumByColumnId($soncolunm[1]['column_id'])-7 > 0 ? $articlesingle->getArticleNumByColumnId($soncolunm[1]['column_id'])-7:0;
 		$pageclass 	 		= new Page($articlenum, $perpage, $this->page, 'CN');
-		
 		$newslist 			= $articlesingle->getKindsOfNews($soncolunm[1]['column_id'], 'article_addtime', $pageclass->setLimit(7));
 		if(empty($newslist)){
 			$newslist 	= array();
@@ -125,13 +123,10 @@ class ArticleView extends BaseView {
 			}
 		}
 		$perpage 	 		= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 9;
-	
 		$columnleftnews 	= $articlesingle->getNewsListByColumn($columnid, 'article_addtime', 5);
 		$columnrightnews 	= $articlesingle->getNewsListByColumn($columnid, 'article_addtime', 7);
-	
 		$articlenum			= $articlesingle->getArticleNumByColumnId($columnid)-12 > 0 ? $articlesingle->getArticleNumByColumnId($columnid)-7:0;
 		$pageclass 	 		= new Page($articlenum, $perpage, $this->page, 'CN');
-		
 		$newslist 			= $articlesingle->getKindsOfNews($columnid, 'article_addtime', $pageclass->setLimit(12));
 		$todayhotnews 		= $articlesingle->getHotNews('article_agree', 8);
 		$commenthotnews 	= $articlesingle->getHotNews('article_comments', 8);
@@ -204,7 +199,6 @@ class ArticleView extends BaseView {
 			$check = 1;
 		}
 		$articleinfo 	= $articlesingle->getNewsById($check);
-		
 		if (empty($articleinfo[0])) {
 			$this->smarty->display('fronttemplate/errorPage.html');
 		} else {
@@ -362,13 +356,11 @@ class ArticleView extends BaseView {
 		if (!isset($_GET['columnpid']) || trim($_GET['columnpid']) == ''){
 			exit("栏目ID为空!");
 		}
-		
 		$columnpid		= $_GET['columnpid'];
 		$columnsingle	= ColumnAct::getInstance();
 		$articlesingle	= ArticleAct::getInstance();
 		$columnlist		= $columnsingle->act_getColumnList(0);//获得栏目列表
 		$lcolumnlist	= $columnsingle->act_getColumnList($columnpid);//获得子栏目列表
-		
 		if (empty($lcolumnlist[0])) {
 			$perpage 	 	= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 20;
 			$articlenum		= $articlesingle->getArticleNumByColumnId($columnpid);
@@ -383,7 +375,6 @@ class ArticleView extends BaseView {
 			$newslist 		= $articlesingle->getKindsOfNews($lcolumnlist[0]['column_id'], 'article_addtime', $pageclass->limit);
 			$pageformat		= $articlenum > $perpage ? array(0,1,2,3,4,5,6,7,8,9) : array(0,1,2,3,4);
 		}
-		
 		$this->smarty->assign("mod",$_GET['mod']);
 		$this->smarty->assign('columnpid', $columnpid);
 		$this->smarty->assign('columnid', $lcolumnlist[0]['column_id']);
@@ -393,6 +384,7 @@ class ArticleView extends BaseView {
 		$this->smarty->assign('pageStr', $pageclass->fpage($pageformat));
 		$this->smarty->display('admintemplate/article.htm');
 	}
+	
 	public function view_getArticle(){
 		if (!isset($_GET['columnid']) || trim($_GET['columnid']) == ''){
 			exit("栏目ID为空!");
@@ -400,7 +392,6 @@ class ArticleView extends BaseView {
 		$columnid		= $_GET['columnid'];
 		$articlesingle	= ArticleAct::getInstance();
 		$columnsingle	= ColumnAct::getInstance();
-		
 		$columnlist		= $columnsingle->act_getColumnList(0);//获得栏目列表
 		$perpage 	 	= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 20;
 		$articlenum		= $articlesingle->getArticleNumByColumnId($columnid);
@@ -419,10 +410,8 @@ class ArticleView extends BaseView {
 		$this->smarty->assign('columnid', $columnid);
 		$this->smarty->assign("columnlist",$columnlist) ;
 		$this->smarty->assign("lcolumnlist",$lcolumnlist) ;
-
 		$this->smarty->assign("newslist", $newslist);
 		$this->smarty->assign('pageStr', $pageclass->fpage($pageformat));
-		
 		$this->smarty->display('admintemplate/article.htm');
 	}
 	
@@ -433,7 +422,6 @@ class ArticleView extends BaseView {
 		$columnpid		= $_GET['columnpid'];
 		$articlesingle	= ArticleAct::getInstance();
 		$columnsingle	= ColumnAct::getInstance();
-	
 		$columnlist		= $columnsingle->act_getColumnList(0);//获得栏目列表
 		$lcolumnlist	= $columnsingle->act_getColumnList($columnpid);//获得子栏目列表
 		$perpage 	 	= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 20;
@@ -452,7 +440,6 @@ class ArticleView extends BaseView {
 			$pageclass 	= new Page(count($all), $perpage, $this->page, 'CN');
 			$newslist 	= $articlesingle->getCheckArticle($pageclass->limit);
 		}
-		
 		if (empty($newslist[0])) {
 			$newslist	= array();
 		}
@@ -460,15 +447,12 @@ class ArticleView extends BaseView {
 			$lcolumnlist = array();
 		}
 		$pageformat		= count($all) > $perpage ? array(0,1,2,3,4,5,6,7,8,9) : array(0,1,2,3,4);
-	
 		$this->smarty->assign("mod", $_GET['mod']);
 		$this->smarty->assign('columnpid', $columnpid);
 		$this->smarty->assign("columnlist",$columnlist) ;
 		$this->smarty->assign("lcolumnlist",$lcolumnlist) ;
-	
 		$this->smarty->assign("newslist", $newslist);
 		$this->smarty->assign('pageStr', $pageclass->fpage($pageformat));
-	
 		$this->smarty->display('admintemplate/checkarticle.htm');
 	}
 	

@@ -24,6 +24,7 @@ class ArticleAct {
 		}
 		return self::$_instance;
 	}
+	
 	/**
 	 * 功能：通过文章ID获得文章信息
 	 * @return Ambigous <boolean, multitype:multitype:, multitype:multitype: >
@@ -73,6 +74,7 @@ class ArticleAct {
 		$order 	= ' order by article_addtime DESC ';
 		return ArticleModel::getInstance()->getArticleInfo($field, $where, $order, $limit);
 	}
+	
 	/**
 	 * 功能：通过栏目ID查找新闻
 	 * @param unknown $columnid 栏目ID
@@ -119,6 +121,7 @@ class ArticleAct {
 		$limits	= empty($limits) ? '' : ' '.$limits;
 		return ArticleModel::getInstance()->getArticleInfo($field, $where, $order, $limits);
 	}
+	
 	/**
 	 * 功能：获得某个栏目下新闻的总条数
 	 * @param unknown $columnid 栏目ID
@@ -128,6 +131,7 @@ class ArticleAct {
 		$where 	= " column_id = ".$columnid." AND is_delete=0 ";
 		return ArticleModel::getInstance()->getArticleNum($where);
 	}
+	
 	/**
 	 * 功能：获得搜索新闻的总条数
 	 * @return boolean
@@ -140,6 +144,7 @@ class ArticleAct {
 		$where 	= " article_title like '%".$search."%' and article_status = '1' and is_delete = '0' ";
 		return ArticleModel::getInstance()->getArticleNum($where);
 	}
+	
 	/**
 	 * 功能：文章点赞
 	 * @param number $mark 标识($mark为1，给文章点赞;$mark为0，取消点赞)
@@ -163,6 +168,7 @@ class ArticleAct {
 			return false;
 		}
 	}
+	
 	/**
 	 * 功能：文章踩
 	 * @param number $mark 标识($mark为1，文章踩;$mark为0，取消踩)
@@ -187,7 +193,7 @@ class ArticleAct {
 		}
 	}
 	
-public function articleInsert($articlepicture = '') {
+	public function articleInsert($articlepicture = '') {
 		$articleauthor = '';
 		$articlestatus = 1;
 		if (isset($_SESSION['USER_NAME'])) {
@@ -302,7 +308,6 @@ public function articleInsert($articlepicture = '') {
 	}
 	
 	public function getParentCheckArticle($limits = '') {
-		
 		if(!isset($_GET['columnpid']) || trim($_GET['columnpid']) == ''){
 			exit("栏目ID为空!");
 		}

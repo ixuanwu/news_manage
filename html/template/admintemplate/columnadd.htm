@@ -1,31 +1,27 @@
 {include file="admintemplate/header.htm"}
 <script src="./public/js/containspecial.js"></script>
-<div class="main">
-    <div class="userlogin">
-        <table cellspacing="0" width="100%">
-            <tr>
-                <td>栏目名:</td>
-                <td><input type="text" id="column_name" name="column_name" /></td>
-                <td><p style="font-size:12px; color:#F00; float:right;" id="tips-name"></p></td>
-            </tr>
-            <tr>
-                <td>父栏目:</td>
-                <td>
-                    <select id="column_pid">
-                        <option value="0" selected="true">顶层栏目</option>
-                        {foreach $columnlist as $column}
-                            <option value="{$column.column_id}">{$column.column_name}</option>
-                        {/foreach}
-                    </select>
-                </td>
-                <td><p style="font-size:12px; color:#F00; float:right;" id="tips-pid"></p></td>
-            </tr>
-            <tr>
-                <td class="go"><button id="add">添加</button></td>
-            </tr>
-	   </table>
-    </div>
-	
+<div class="title">添加新栏目</div>
+<div class="div_form">
+		<div class="cont">
+			<div class="uinArea">
+                <label class="input-tips">栏目名:</label>
+                <input type="text" id="column_name" name="column_name" class="inputOuter"/>
+                <span class="err_msg" id="tips-name"></span>
+            </div>
+            <div class="uinArea">
+                <label class="input-tips">父栏目:</label>
+                <select id="column_pid" class="inputOuter" style="height:38px;">
+                   <option value="0" selected="true">顶层栏目</option>
+                     {foreach $columnlist as $column}
+                       <option value="{$column.column_id}">{$column.column_name}</option>
+                     {/foreach}
+                </select>
+                <span class="err_msg" id="tips-pid"></span>
+            </div>
+            <div class="all_btn">
+               <button id="add" class="button_blue" style="width:180px;height:50px;">添&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+            </div>
+	   </div>
 </div>
 <script>
 {literal}

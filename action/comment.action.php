@@ -23,14 +23,14 @@ class CommentAct {
 		$comDisagrees		= 0;
 		$isdelete			= 0;
 		$newInfo			= array(
-				'userId'	=> $userId,
-				'articleId'	=> $articleId,
-				'comContent'		=> $comContent,
-				'comAddtime'=> $comAddtime,
-				'comAgrees'=> $comAgrees,
-				'comDisagrees'=> $comDisagrees,
-				'isdelete'=> $isdelete,
-		);
+										'userId'	=> $userId,
+										'articleId'	=> $articleId,
+										'comContent'=> $comContent,
+										'comAddtime'=> $comAddtime,
+										'comAgrees' => $comAgrees,
+										'comDisagrees'=> $comDisagrees,
+										'isdelete'	=> $isdelete,
+									);
 		$result		= CommentModel::comInsertAndback($newInfo);
 		$result['user_name']		= $_SESSION['USER_NAME'];
 		if ($result['comment_id'] != null) {

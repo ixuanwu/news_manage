@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+.cont{
+	margin: 40px 30px;
+}
+
+.inputOuter {
+	width:240px;
+	height:30px;
+	margin-top:10px;
+	float:left;
+	border-radius:3px;
+	font-size: 15px;
+	font-family: "微软雅黑";
+}
+
+.uinArea {
+	margin-left:80px;
+	height:55px;
+	position:relative;
+	z-index:10;
+	margin-top:15px;
+}
+
+.input-tips {
+	float:left;
+	margin-top:10px;
+	width:80px;
+	height:42px;
+	font-size:16px;
+	line-height:42px;
+	font-family:"Hiragino Sans GB", "Microsoft Yahei";
+}
+.div_form{
+	border-style:solid;
+	border-width:2px;
+	margin:auto;
+	margin-top:15px;
+	border-radius:5px;
+	width:600px;
+	text-align:center;
+	box-shadow: #666 0px 0px 10px;background: #f5ffc6;
+	-webkit-box-shadow: #666 0px 0px 10px;
+	-moz-box-shadow: #666 0px 0px 10px;
+}
+.all_btn{
+	margin-top: 55px;
+	float: left;
+	margin-left: 140px;
+}
+.button_blue{
+	display:inline-block;
+	float:left;
+	height:38px;
+	border-radius:4px;
+	width:70px;
+	background:#2795dc;
+	border:none;
+	cursor:pointer;
+	margin-left:30px;
+	border-bottom:3px solid #0078b3;*border-bottom:none;
+	color:#fff;
+	font-size:16px;padding:0 10px;*width:140px;
+	text-align:center;outline:none;font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
+}
+.title{
+	font-family: "微软雅黑";
+	text-align: center;
+	font-size: 30px;
+}
+
+.err_msg{
+	color: red;
+	font-size: 12px;
+	font-family:"微软雅黑";
+	font-weight: bold;
+}

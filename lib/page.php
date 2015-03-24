@@ -142,7 +142,7 @@
 		
 		//跳转到那一页
 		private function goPage($go){
-			return '<span class="goPage"><input type="text" style="margin:0px 5px;" onkeydown="javascript:if(event.keyCode==13){var page=(this.value>'.$this->pageNum.')?'.$this->pageNum.':this.value;location=\''.$this->uri.'&page=\'+page+\'\'}" value="'.$this->page.'"><input type="button" class="int" value="'.$go.'" onclick="javascript:var page=(this.previousSibling.value>'.$this->pageNum.')?'.$this->pageNum.':this.previousSibling.value;location=\''.$this->uri.'&page=\'+page+\'\'"></span>';
+			return '<span class="goPage"><input type="text" style="margin:0px 5px; width:30px;" onkeydown="javascript:if(event.keyCode==13){var page=(this.value>'.$this->pageNum.')?'.$this->pageNum.':this.value;location=\''.$this->uri.'&page=\'+page+\'\'}" value="'.$this->page.'"><input type="button" class="int" value="'.$go.'" onclick="javascript:var page=(this.previousSibling.value>'.$this->pageNum.')?'.$this->pageNum.':this.previousSibling.value;location=\''.$this->uri.'&page=\'+page+\'\'"></span>';
 		}
 		
 		//输出样式
@@ -150,8 +150,7 @@
 			$html[0]=$this->config["header1"].$this->total.$this->config["header2"];
 			// $html[1]=$this->config["current"].($this->end()-$this->start()+1).$this->config["recode"];
 			// $html[2]=$this->config["current"].$this->start().'-'.$this->end().$this->config["recode"];
-			$html[3]=$this->page.'/'.$this->pageNum.$this->config["page"];
-			
+			// $html[3]=$this->page.'/'.$this->pageNum.$this->config["page"];
 			$html[4]=$this->first();
 			$html[5]=$this->prev();
 			$html[6]=$this->pageList();

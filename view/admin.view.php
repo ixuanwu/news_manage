@@ -41,15 +41,18 @@ class AdminView extends BaseView{
 		$this->smarty->assign('pageStr', $pageclass->fpage($pageformat));
 		$this->smarty->display("admintemplate/userList.htm");
 	}
+	
 	function view_deleteUser(){
 		if(AdminAct::getInstance()->act_deleteUser()){
 			echo "success";
 		}
 	}
+	
 	//显示添加用户页面
 	function view_addUser(){
 		$this->smarty->display("admintemplate/adduser.htm");
 	}
+	
 	//添加用户
 	function view_executeAddUser(){
 		$res	= UserAct::act_addUser();
@@ -69,11 +72,13 @@ class AdminView extends BaseView{
 			echo "err";
 		}
 	}
+	
 	//显示修改密码页面
 	function view_updateUser(){
 		$this->smarty->assign("userid", $_GET['userid']);
 		$this->smarty->display("admintemplate/resetpassw.htm");
 	}
+	
 	//修改密码
 	function view_rePassw(){
 		$res	= UserAct::act_updPassw();

@@ -1,23 +1,23 @@
 {include file="admintemplate/header.htm"}
 <div class="main">
-	<div align="left" style="margin-left:160px;float:left">
-		<form method="post" action="index.php?mod=comment&act=admincom" >
-			<label>筛选：</label>
-			文章ID<input type="text" name="articleId" id="articleId" value="{$select.articleId}">
-			用户ID<input type="text" name="userId" id="userId" value="{$select.userId}">
-			按时间：
-			{if $select.order eq ''}
-			<input name ="order" type="radio" value="1">降序<input name="order" type="radio" value="2">升序
-			{elseif $select.order eq 2}
-			<input name ="order" type="radio" value="1">降序<input name="order" type="radio" value="2" checked="checked">升序
-			{else}
-			<input name ="order" type="radio" value="1" checked="checked">降序<input name="order" type="radio" value="2">升序
-			{/if}
-			<input type="submit" value="筛选" onclick="return checkselect">
-		</form>	
-	</div>
-	<div style="float:left;margin-top:6px;margin-left:60px"><a style="font-size:16px;color:blue" href="index.php?mod=comment&act=admincom">显示全部</a></div>
-	<div style="float:right;margin-top:6px;margin-right:160px;"><label style="font-size:13px;color: red;">{$msg}</label></div>	
+<!-- 	<div align="left" style="margin-left:160px;float:left"> -->
+<!-- 		<form method="post" action="index.php?mod=comment&act=admincom" > -->
+<!-- 			<label>筛选：</label> -->
+<!-- 			文章ID<input type="text" name="articleId" id="articleId" value="{$select.articleId}"> -->
+<!-- 			用户ID<input type="text" name="userId" id="userId" value="{$select.userId}"> -->
+<!-- 			按时间： -->
+<!-- 			{if $select.order eq ''} -->
+<!-- 			<input name ="order" type="radio" value="1">降序<input name="order" type="radio" value="2">升序 -->
+<!-- 			{elseif $select.order eq 2} -->
+<!-- 			<input name ="order" type="radio" value="1">降序<input name="order" type="radio" value="2" checked="checked">升序 -->
+<!-- 			{else} -->
+<!-- 			<input name ="order" type="radio" value="1" checked="checked">降序<input name="order" type="radio" value="2">升序 -->
+<!-- 			{/if} -->
+<!-- 			<input type="submit" value="筛选" onclick="return checkselect"> -->
+<!-- 		</form>	 -->
+<!-- 	</div> -->
+<!-- 	<div style="float:left;margin-top:6px;margin-left:60px"><a style="font-size:16px;color:blue" href="index.php?mod=comment&act=admincom">显示全部</a></div> -->
+<!-- 	<div style="float:right;margin-top:6px;margin-right:160px;"><label style="font-size:13px;color: red;">{$msg}</label></div>	 -->
 	<table cellspacing="0" width="100%">
 		<tr class="title">
 			<th>评论ID</th>
@@ -27,8 +27,8 @@
 			<th>评论时间</th>
 			<th>赞数</th>
 			<th>踩数</th>
+			<th>操作</th>
 		</tr>
-
 		{foreach $comlist as $key=>$com}
 			<tr id="com_{$com.comment_id}">
 				<td>{$com.comment_id}</td>
@@ -39,7 +39,7 @@
 				<td>{$com.comment_agrees}</td>
 				<td>{$com.comment_disagrees}</td>
 				<td colspan="2">
-					<a onclick=admincomdel({$com.comment_id},{$com.article_id})>删除</a>
+					<a onclick=admincomdel({$com.comment_id},{$com.article_id})><img src='../public/img/icn_trash.png' title="删除"></a>
 				</td>
 			</tr>
 		{/foreach}
