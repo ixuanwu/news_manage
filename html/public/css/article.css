@@ -23,9 +23,9 @@ margin-left:20px;
 color:gray;
 font-size:24px;
 font-family:黑体;
-margin-top:30px;
-margin-left:30px;
-margin-bottom:60px;
+margin-top:60px;
+/* margin-left:30px; */
+margin-bottom:40px;
 }
 
 .my_a_comment1{
@@ -63,8 +63,9 @@ position:absolute;
 left:700px;
 }
 .line{
-margin-left:30px;
+/* margin-left:30px; */
 margin-bottom:30px;
+text-align: center;
 }
 .a_line{
 margin-left:30px;
@@ -125,8 +126,8 @@ color:gray;
 }
 .show_pic{
 position:absolute;
-top:300px;
-left:555px;
+top:350px;
+left:755px;
 width:160px;
 height:120px;
 }
@@ -202,7 +203,6 @@ margin-left:30px;
 #dis2,#dis3,#dis4,#dis5{
 
 }
-
 
 .regist_errortip_span {
 	color: red;

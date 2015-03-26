@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var editor1;
 	KindEditor.ready(function(K) {
 		editor1 = K.create('textarea[name="articlecontent"]', {
+			height:'900px',
 			cssPath : './public/kindeditor/plugins/code/prettify.css',
 			uploadJson : './public/kindeditor/php/upload_json.php',
 			fileManagerJson : './public/kindeditor/php/file_manager_json.php',
@@ -162,44 +163,42 @@ $(document).ready(function(){
 	</div>
 </div>
 </div>
-<div id="dis2" style="display:none">
+<div id="dis2" class="div_form" style="display:none;width:800px;">
 			<form id="formcontent" method="post" action="" enctype="multipart/form-data">
 					<div class = "my_comment">未审核文章</div>
-					<div class="line">
-						<span class="my_title">标题：</span>
-						<span><input class = "my_a_text" type = "text" id="title"  name="articletitle"/></span>
+					<div class="uinArea">
+						<label class="input-tips">标题：</label>
+						<input class = "inputOuter" style="width:500px;" type = "text" id="title"  name="articletitle"/>
 					</div>
-					<div class="a_line">
-						<span class="my_title">栏目：</span>
-						<span>
-							<select class="my_select" id="column" name="columnid">
+					<div class="uinArea">
+						<label class="input-tips">栏目：</label>
+							<select class="inputOuter" style="height:35px;width:180px;" id="column" name="columnid">
 				
 							</select>
-						</span>
 					</div>
-					<div class="a_line">
-						<span class="my_title">图片：</span>
-						<span><input class = "my_b_text" type = "file" id="picture" name="articlepicture" multiple="multiple"></span>
+					<div class="uinArea">
+						<label class="input-tips">图片：</label>
+						<input class = "inputOuter" style="margin-top:20px;" type = "file" id="picture" name="articlepicture" multiple="multiple">
 						<!-- <span><input class = "my_a_button" type="button" value="浏览"></span> -->
 					</div>
 					<div class = "show_pic">
 						<img class="my_picture" src="" style="width:160px;height:120px;" id="article_pic"/>
 					</div>
-					<div class="line">
-						<span class="my_title">导语：</span>
-						<span><textarea class="my_lead" cols ="83" rows = "3" id="introduce" name="articleintroduction"></textarea></span>
+					<div class="uinArea">
+						<label class="input-tips">导语：</label>
+						<textarea class="inputOuter" style="height: 80px;width:500px;" id="introduce" name="articleintroduction"></textarea>
 					</div>
 					<div class="line">
-						<span class="my_title">内容：</span>
-						<span style="margin-left:15px;">
-							<textarea name="articlecontent" style="width:500px;height:200px;" id="content" ></textarea>
-						</span>
+						<div class="my_comment">内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容</div>
+						<div style="margin-left: 76px;">
+						<textarea name="articlecontent" style="width:300px;" id="content" ></textarea>
+						</div>
 					</div>
-					<div class="line">
-						<input style = "margin-left: 100px" type = "button" value = "预览" id="preview"/>
-						<input style = "margin-left: 100px" type = "button" value = "通过" id="accept"/>
-						<input style = "margin-left: 100px" type = "button" value = "删除" id="delete"/>
-						<input style = "margin-left: 100px" type = "button" value = "再议" id="toreturn"/>
+					<div class="all_btn" style="margin-left: 170px;">
+						<input class="button_blue" type = "button" value = "预览" id="preview"/>
+						<input class="button_blue" type = "button" value = "通过" id="accept"/>
+						<input class="button_blue" type = "button" value = "删除" id="delete"/>
+						<input class="button_blue" type = "button" value = "再议" id="toreturn"/>
 					</div>
 					</form>
 			</div>
