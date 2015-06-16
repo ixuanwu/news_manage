@@ -2,8 +2,6 @@
 /**
  * 	类名：UserView
  *	功能：个人中心相关视图层
- *	版本： 1.0
- *	日期：2014-11-26
  *	作者：蒋和超
  */
 class UserView extends BaseView{
@@ -189,7 +187,6 @@ class UserView extends BaseView{
 	 * 函数说明：返回当前页
 	 */
 	public function view_redirectHtm(){
-		//'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']		获取当前页面
 		redirect_to($_SERVER['HTTP_REFERER']);
 	} 
 }

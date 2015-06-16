@@ -1,3 +1,6 @@
+html{
+	font-family: '微软雅黑';
+}
 .head_page_div {
 	width: 100%;
 	float: left;
@@ -36,31 +39,25 @@
 	padding-bottom: 50px;
 }
 
-.banner_item_hover {
-	width: 100px;
-	height: 30px;
-	float: left;
-	background-image: url("../../img/frontimg/banner_hover.png");
-	color: white;
-}
-
 .banner_item_normal {
-	width: 100px;
-	height: 30px;
+	width: 99px;
+	height: 40px;
 	float: left;
-	background-image: url("../../img/frontimg/banner_normal.png");
 	color: black;
+	background-color: #eeeaff;
 }
 
+.banner_item_normal:hover{
+	background-color: #9eced3;
+	color:white;
+}
 .banner_text {
 	width: 100px;
-	margin-top: 6px;
+	margin-top: 10px;
 	font-size: 16px;
-	font-weight: bold;
 	text-align: center;
 	word-wrap:break-word;
 }
-
 .banner_item_hover a:hover {
 	color: white;
 }
@@ -90,12 +87,24 @@
 }
 
 .head_search_div .search_button_div {
-	background-image: url("../../img/frontimg/button.png");	
-	margin-top: 10px;
-	width: 60px;
-	height: 23px;
-	padding-top: 7px;
-	text-align: center;
-	font-size: 13px;
-	float: right;
+	display:inline-block;
+	float:right;
+	height:25px;
+	border-radius:4px;
+	width:60px;
+	background:#c4c4c4;
+	padding-top: 5px;
+	border:none;
+	cursor:pointer;
+	margin-top:10px;
+	border-bottom:3px solid #b4b4b4;*border-bottom:none;
+	color:#000000;
+	font-size:16px;padding:0 10px;*width:140px;
+	text-align:center;outline:none;font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
+}
+
+.head_search_div .search_button_div:hover{
+	background:#848484;
+	border-bottom:3px solid #7d7d7d;*border-bottom:none;
+	color: #ffffff;
 }

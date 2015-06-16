@@ -166,22 +166,13 @@
 	background-color: #3399FF;
 	float: right;
 }
-.new_comment_hr_div{
-	clear:left;	
+
+.allnew_div .new_comment_div .new_comment_frame_div .new_comment_btn_div:hover{
+	background-color: #007bf7;
 }
 
-.allnew_div .new_comment_div .new_comment_frame_div .new_comment_btn_div {
-	margin-right: 20px;
-	width: 63px;
-	height: 25px;
-	color: white;
-	padding-top: 8px;
-	padding-left: 37px;
-	font-size: 13px;
-	font-weight: bold;
-	border-radius: 5px;
-	background-color: #3399FF;
-	float: right;
+.new_comment_hr_div{
+	clear:left;	
 }
 
 .new_comment_msg{

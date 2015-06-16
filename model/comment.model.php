@@ -2,7 +2,6 @@
 /**
  * 类别： comment
  * 功能：处理comment类数据库相关操作
- * 版本：2014-11-25
  * 作者：蒋和超
  */
 if (!isset($_SESSION)) {
@@ -10,16 +9,15 @@ if (!isset($_SESSION)) {
 }
 class CommentModel {
 	private static $dbConn;
-	private static $table_news_comment = 'news_comment';    	//新闻评论表
-	private static $table_news_user = 'news_user';
-	private static $table_news_article = 'news_article';
-	private static $table_user_comment_agree = 'news_user_comment';
-	static $errCode	  = 0;
-	static $errMsg	  = '';
+	private static $table_news_comment 		= 'news_comment';    	//新闻评论表
+	private static $table_news_user 		= 'news_user';
+	private static $table_news_article 		= 'news_article';
+	private static $table_user_comment_agree= 'news_user_comment';
+	static $errCode	  						= 0;
+	static $errMsg	 						= '';
 	static $_instance;
 	
 	public function __construct() {
-//		self::$table_news_comment = C('TABLE_NEWS_COMMENT');
 		self::$table_news_comment = 'news_comment';
 	}
 	
@@ -109,7 +107,7 @@ class CommentModel {
 			array_push($values,"{$key} = {$v}");
 		}
 		$sql	= implode(",",$values);
-		$isql = "UPDATE `".self::$table_news_comment."` SET ".$sql." WHERE comment_id = {$comId}";
+		$isql 	= "UPDATE `".self::$table_news_comment."` SET ".$sql." WHERE comment_id = {$comId} AND is_delete = 0";
 		$query	= self::$dbConn->query($isql);
 		if (!$query) {
 			return false;
@@ -131,6 +129,7 @@ class CommentModel {
 		}
 		return self::$dbConn->fetch_array_all($query);
 	}
+	
 	public function getCommentList2($filed, $where, $order='', $limit='') {
 		self::initDb();
 		$sql = 'SELECT '.$filed.' FROM '. self::$table_news_comment .' a, '.self::$table_news_user.' b' .$where.' ' .$order. ' ' .$limit;

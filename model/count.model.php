@@ -2,7 +2,6 @@
 /**
  * 类名：CountModel
  * 功能：读取统计信息
- * 版本：2014-09-24
  * 作者：蒋和超
  */
 class CountModel{

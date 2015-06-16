@@ -28,7 +28,7 @@ a:hover {
 .page_div {
 	width: 1000px;
 	margin: 0 auto;
-	font-family: "宋体";
+/* 	font-family: "宋体"; */
 }
 
 .shade_div {
@@ -52,13 +52,16 @@ a:hover {
 	top: 130px;
 	left: 50%;
 	width: 340px;
-	height: 340px;
+	height: 370px;
 	margin-left: -135px;
 	z-index: 9999;
 	display: none;
 	color: #3399FF;
 	font-size: 13px;
 	font-weight: bold;
+	-webkit-box-shadow: #666 0px 0px 10px;
+	-moz-box-shadow: #666 0px 0px 10px;
+	box-shadow: #666 0px 0px 10px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #3399FF;
@@ -118,7 +121,7 @@ a:hover {
 
 .loginregist_div .loginregist_panel_div .login_form_div .login_password_div{
 	position: absolute;
-	top: 95px;
+	top: 105px;
 	left: 30px;
 	width: 280px;
 	height: 26px;
@@ -127,7 +130,7 @@ a:hover {
 
 .loginregist_div .loginregist_panel_div .login_form_div .login_secucodeinput_div{
 	position: absolute;
-	top: 155px;
+	top: 175px;
 	left: 30px;
 	width: 280px;
 	height: 26px;
@@ -136,7 +139,7 @@ a:hover {
 
 .loginregist_div .loginregist_panel_div .login_form_div .regist_mail_div{
 	position: absolute;
-	top: 215px;
+	top: 240px;
 	left: 30px;
 	width: 280px;
 	height: 26px;
@@ -145,23 +148,15 @@ a:hover {
 
 .loginregist_div .loginregist_panel_div .login_form_div .login_secucode_div{
 	position: absolute;
-	top: 230px;
-	left: 30px;
-	width: 200px;
-	height: 35px;
-}
-
-.loginregist_div .loginregist_panel_div .login_form_div .login_remember_div{
-	position: absolute;
 	top: 250px;
-	left: 230px;
+	left: 30px;
 	width: 200px;
 	height: 35px;
 }
 
 .loginregist_div .loginregist_panel_div .login_form_div .loginregist_button_div{
 	position: absolute;
-	top: 290px;
+	top: 320px;
 	left: 120px;
 	width: 63px;
 	height: 25px;
@@ -174,7 +169,8 @@ a:hover {
 
 .loginregist_input {
 	width: 270px;
-	height: 20px;
+	height: 30px;
+	border-radius:3px;
 }
 
 .loginregist_errortip_span {

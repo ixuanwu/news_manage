@@ -2,7 +2,6 @@
 /**
  * 类名：CountView
  * 功能：统计信息视图层
- * 版本：2014-09-24
  * 作者：蒋和超
  */
 class CountView extends BaseView {

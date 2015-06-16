@@ -2,7 +2,6 @@
 /**
  * 类名：ArticleModel
  * 功能：文章表管理
- * 日期：2014-11-25
  * 作者：蒋和超
  */
 class ArticleModel {
@@ -14,13 +13,6 @@ class ArticleModel {
 	static $errCode	  = 0;
 	static $errMsg	  = '';
 	static $_instance;
-	
-	public function __construct() {
-// 		self::$table_news_article 		= C('');
-// 		self::$table_news_column 		= C('');
-// 		self::$table_news_user_article	= C('');
-// 		self::$table_news_artpicture	= C('');
-	}
 	
 	public static function initDB() {
 		global $dbConn;

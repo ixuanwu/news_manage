@@ -2,8 +2,6 @@
 /**
  * 	类名：ArticleView	
  *	功能：管理员登录、添加相关视图层
- *	版本： 1.0
- *	日期：2014-11-26
  *	作者：蒋和超
  */
 
@@ -41,16 +39,16 @@ class ArticleView extends BaseView {
 			}
 		}
 		
-		$picturetnews		= $articlesingle->getNewsListByColumn(11, 'article_addtime', 4);
-		$todayhotnews 		= $articlesingle->getHotNews('article_agree', 8);
-		$commenthotnews 	= $articlesingle->getHotNews('article_comments', 8);
+		$picturetnews		= $articlesingle->getNewsListByColumn(11, 'article_addtime', 4);//获取图片新闻
+		$todayhotnews 		= $articlesingle->getHotNews('article_agree', 8); //点赞数
+		$commenthotnews 	= $articlesingle->getHotNews('article_comments', 8);//评论数
 		$articlecolumn		= array_slice($colunmlist,0,9);
-		$this->smarty->assign('columninfo', $articlecolumn);
-		$this->smarty->assign('importnews', $importnews);
+		$this->smarty->assign('columninfo', $articlecolumn);//获取新闻栏目
+		$this->smarty->assign('importnews', $importnews);//重要新闻
 		$this->smarty->assign('columnnews', $columnnews);
-		$this->smarty->assign('picturenews', $picturetnews);
-		$this->smarty->assign('todayhotnews', $todayhotnews);
-		$this->smarty->assign('commenthotnews', $commenthotnews);
+		$this->smarty->assign('picturenews', $picturetnews);//图片新闻
+		$this->smarty->assign('todayhotnews', $todayhotnews);//今日热点
+		$this->smarty->assign('commenthotnews', $commenthotnews);//评论热点
 		$this->smarty->display('fronttemplate/index.htm');
 	}
 	

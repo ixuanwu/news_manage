@@ -3,8 +3,6 @@
 /**
  * 	类名：AdminAct
  *	功能：新闻文章管理动作处理层
- *	版本： 1.0
- *	日期：2015-1-26
  *	作者：蒋和超
  */
 class ArticleAct {
@@ -196,7 +194,7 @@ class ArticleAct {
 	public function articleInsert($articlepicture = '') {
 		$articleauthor = '';
 		$articlestatus = 1;
-		if (isset($_SESSION['USER_NAME'])) {
+		if (isset($_SESSION['USER_NAME'])&&!isset($_SESSION['ADMIN_NAME'])) {
 			$articleauthor = $_SESSION['USER_NAME'];
 			$articlestatus = 0;
 		} else if (isset($_SESSION['ADMIN_NAME'])) {

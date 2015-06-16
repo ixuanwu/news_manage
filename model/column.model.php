@@ -2,7 +2,6 @@
 /**
  * 类名：ColumnModel
  * 功能：新闻类别栏目管理
- * 日期：2014-11-25
  * 作者：蒋和超
  */
 class ColumnModel{
@@ -74,7 +73,7 @@ class ColumnModel{
      */
     public function getColumnInfo($field, $where){
         self::initDB();
-        $sql = "SELECT " . $field . " from " . self::$table . $where . " and is_delete=0 limit 1";
+        $sql = "SELECT " . $field . " from " . self::$table . $where . " and is_delete = 0 limit 1";
         $query = self::$dbConn->query($sql);
         if (!query){
             self::$errCode  = '1803';

@@ -2,7 +2,6 @@
 /**
  * 类名：CommentArgeeAct
  * 功能：管理对于评论表news_comment的赞/踩表news_user_comment相关信息
- * 版本：2014-12-25
  * 作者: 蒋和超
  */
 class CommentAgreeAct {

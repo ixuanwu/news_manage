@@ -2,8 +2,6 @@
 /**
  * 	类名：CommentView
  *	功能：评论管理相关视图层
- *	版本： 1.0
- *	日期：2014-11-26
  *	作者：蒋和超
  */
 class CommentView extends BaseView{
@@ -41,7 +39,7 @@ class CommentView extends BaseView{
 		}
 		$perpage 	 		= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 20;
 		$userCount			= CommentAct::act_getArtComNum();
-		$pageclass 	 		= new Page($userCount, $perpage, $this->page, 'CN');
+		$pageclass 	 		= new Page($userCount, $perpage, '', 'CN');
 		$limit				= $pageclass->setLimit();
 		$pageformat			= $userCount > $perpage ? array(0,1,2,3,4,5,6,7,8,9) : array(0,1,2,3,4);
 		$result 			= CommentAct::act_getComByArticle('', $limit);
@@ -139,8 +137,8 @@ class CommentView extends BaseView{
 		$perpage 	 		= isset($_GET['perpage'])&&intval($_GET['perpage'])>0 ? intval($_GET['perpage']) : 20;
 		$comnum				= CommentAct::act_getComNum($myarray);
 		$pageclass 	 		= new Page($comnum, $perpage, $this->page, 'CN');
-		$limit					= $pageclass->setLimit();
-		$result 					= CommentAct::act_getComList($myarray, $iorder, $limit);
+		$limit				= $pageclass->setLimit();
+		$result 			= CommentAct::act_getComList($myarray, $iorder, $limit);
 		$pageformat			= $comnum > $perpage ? array(0,1,2,3,4,5,6,7,8,9) : array(0,1,2,3,4);
 		$this->smarty->assign('pageStr', $pageclass->fpage($pageformat));
 		$this->smarty->assign('title','评论管理');

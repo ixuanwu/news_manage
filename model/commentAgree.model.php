@@ -2,7 +2,6 @@
 /**
  * 类别： CommentAgreeModel
  * 功能：处理news_user_comment评论赞/踩数据库相关操作
- * 版本：2014-11-25
  * 作者：蒋和超
  */
 if (!isset($_SESSION)) {

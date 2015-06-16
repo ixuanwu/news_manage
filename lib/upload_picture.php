@@ -8,8 +8,7 @@ function upPicture($filename){
 		}
 		$max_size='2000000';      // 最大文件限制（单位：byte）
 		$file=$_FILES[$filename];
-		if(!file_exists($path))
-		{
+		if(!file_exists($path)){
 			mkdir("$path", 0755);		//检查是否有该文件夹，如果没有就创建，并给予最高权限
 		}
 		//允许上传的文件格式
@@ -18,8 +17,7 @@ function upPicture($filename){
 			return "big";
 		}
 		//检查上传文件是否在允许上传的类型
-		if(!in_array($file["type"],$type))
-		{
+		if(!in_array($file["type"],$type)){
 			return "type_err";
 		}
 		$filetype = $file['type'];
@@ -41,8 +39,7 @@ function upPicture($filename){
 		if($filetype == 'image/bmp'){
 			$type = '.bmp';
 		}
-		if($file["name"])
-		{
+		if($file["name"]){
 			$time	= date("YmdHis"); //获取时间并赋值给变量
 			$url 	= $path.$time.$type; //图片的完整路径
 			$img = $time.$type; //图片名称

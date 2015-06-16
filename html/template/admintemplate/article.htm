@@ -63,24 +63,27 @@ $(document).ready(function(){
 		});
 	});
 	$("a[service='deleteArticle']").click(function(){
-		var result = confirm('你确定要删除吗？');
-		if(result){
-			$.post("index.php?mod=article&act=deleteArticle&articleid=" + $(this).attr("id"),
+		var id = $(this).attr("id");
+		alertify.confirm("你确定要删除吗?",function(e){
+			if(e) {
+				$.post("index.php?mod=article&act=deleteArticle&articleid=" + id ,
 					function(data){
-				if($.trim(data) == "删除成功"){
-					alertify.success(data);
-					setTimeout('location.href=location.href',1000);
-				}else{
-					alertify.error(data);
-				}
-			});
-		}
+						if($.trim(data) == "删除成功"){
+							alertify.success(data);
+							setTimeout('location.href=location.href',1000);
+						}else{
+							alertify.error(data);
+						}
+				});
+			}
+		});
 	});
 	$("#reset").click(function(){
-		var result = confirm('你确定要返回吗？');
-		if(result){
-			location.href=location.href;
-		}
+		alertify.confirm("你确定要返回吗?",function(e){
+			if(e) {
+				location.href=location.href;
+			}
+		});
 	});
 });	
 	

@@ -2,7 +2,6 @@
 /**
  * 类名：CommentAct
  * 功能：管理Comment评论信息
- * 版本：2015-01-25
  * 作者: 蒋和超
  */
 class CommentAct {
@@ -122,6 +121,7 @@ class CommentAct {
 		$order = empty($order) ? '' : " ORDER BY {$order} ";
 		return CommentModel::getCommentListV2($filed, $where, $order, $limit);
 	}
+	
 	/**
 	 * CommentAct::act_getCommentList
 	 *  系统评论数据查询:通过文章id
@@ -146,14 +146,14 @@ class CommentAct {
 	//按条件取出评论
 	public function act_getComList($condition=array(), $order='', $limit='') {
 		$filed = ' comment_id,user_id,article_id,comment_content,comment_addtime,comment_agrees,comment_disagrees';
-		$where = !empty($condition)&&is_array($condition) ? ' WHERE '.implode(' AND ', $condition).' ' : '';
+		$where = !empty($condition)&&is_array($condition) ? ' WHERE '.implode(' AND ', $condition).' ' : ' WHERE is_delete=0 ';
 		$order = empty($order) ? '' : " ORDER BY {$order} ";
 		return CommentModel::getCommentList($filed, $where, $order, $limit);
 	}
 	
 	//按条件取出评论个数
 	public function act_getComNum($condition=array()) {
-		$where = !empty($condition)&&is_array($condition) ? ' WHERE '.implode(' AND ', $condition).' ' : '';
+		$where = !empty($condition)&&is_array($condition) ? ' WHERE '.implode(' AND ', $condition).' AND is_delete = 0 ' : ' WHERE is_delete = 0 ';
 		return CommentModel::getComNum($where);
 	}
 	

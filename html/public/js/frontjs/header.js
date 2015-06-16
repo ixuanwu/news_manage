@@ -89,16 +89,16 @@ $(document).ready(function(){
 		$(".shade_div").css("display", "none");
 	});
 	
-	$(".banner_item_normal").mouseover(function(){
-		//导航条划过效果
-		$(this).css("background-image", "url('./public/img/frontimg/banner_hover.png')");
-		$(this).css("color", "white");
-	});
-	
-	$(".banner_item_normal").mouseout(function(){
-		//导航条划过效果
-		$(this).css("background-image", "url('./public/img/frontimg/banner_normal.png')");
-		$(this).css("color", "black");
-	});
+//	$(".banner_item_normal").mouseover(function(){
+//		//导航条划过效果
+//		$(this).css("background-image", "url('./public/img/frontimg/banner_hover.png')");
+//		$(this).css("color", "white");
+//	});
+//	
+//	$(".banner_item_normal").mouseout(function(){
+//		//导航条划过效果
+//		$(this).css("background-image", "url('./public/img/frontimg/banner_normal.png')");
+//		$(this).css("color", "black");
+//	});
 	
 });

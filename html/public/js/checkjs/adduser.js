@@ -2,12 +2,11 @@
 /**
  * 说明：对注册界面的表单进行验证
  * 版本：1.0
- * 日期：2014-09-17
- * 作者：杨友能
+ * 作者：蒋和超
  */
-var boolInfor = false;
+window.boolInfor = false;
 function success_fail(blean){
-	boolInfor	= blean;
+	window.boolInfor = blean;
 }
 
 //设置ajax传输方式为同步
@@ -34,9 +33,9 @@ function removeMsg(tip_id){
 	$(tip_id).html("");
 }
 
-//检查ausername是否为空、格式，是否存在
+//检查username是否为空、格式，是否存在
 function checkName(){
-	var pattern		= /^[a-zA-Z_]{1,10}$/;
+	var pattern	 = /^[a-zA-Z_]{1,10}$/;
 	var username = $.trim($("#ausername").val());
 	if(username == ''){
 		showMsg("#tips-ausername", "用户名不能为空!");
@@ -49,14 +48,14 @@ function checkName(){
 		$.post("index.php?mod=public&act=getParam",{"username":username},function(msg){	
 			if($.trim(msg) == 'ok'){
 				showMsg("#tips-ausername", "用户名可用");
-				success_fail(true);		//这样使用函数设置返回值，可针对同步，异步方式，异步不能直接复制给变量
+				success_fail(true);
 			}else {
 				showMsg("#tips-ausername","用户名不可用！");
 				success_fail(false);
 			}
 		});
 	}
-	return true_false(boolInfor ,"#tips-ausername");
+	return true_false(window.boolInfor ,"#tips-ausername");
 }
 //检查apassword是否为空
 function checkPassw(){
@@ -91,7 +90,6 @@ function checkRepassw(){
 }
 //检查email是否为空、格式
 function checkEmail(){
-	boolInfor	= false;
 	var pattern		=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]w+)*$/;
 	var email	= $.trim($("#aemail").val());
 	if(email == ''){
@@ -109,15 +107,18 @@ function checkEmail(){
 				success_fail(false);
 			}
 		});
-		console.log(boolInfor);
 	}
-	return true_false(boolInfor ,"#tips-aemail");
+	return true_false(window.boolInfor ,"#tips-aemail");
 }
 
 //加载页面---前台注册页面
 $(document).ready(function(){
 	$("#addur-btn").click(function(){
-		if(checkName() && checkPassw() && checkRepassw() && checkEmail()){
+		var r1 = checkName() ;
+		var r2 = checkPassw();
+		var r3 = checkRepassw();
+		var r4 = checkEmail();
+		if(r1 && r2 && r3 && r4){
 			datas = {
 					"username":	$("#ausername").val(),
 					"password":	$("#apassword").val(),
@@ -128,7 +129,7 @@ $(document).ready(function(){
 				data:datas,
 				type:'POST',
 				success:function(msg){
-					if($.trim(msg)			== "regist_ok"){
+					if($.trim(msg)== "regist_ok"){
 						alertify.success("亲,注册成功！"); 
 						window.setTimeout("window.location='index.php?mod=article&act=index'",1000);
 					} else if($.trim(msg) 	== "uval_is_exist"){
@@ -166,7 +167,7 @@ $(document).ready(function(){
 				data:datas,
 				type:'POST',
 				success:function(msg){
-					if($.trim(msg)			== "regist_ok"){
+					if($.trim(msg)== "regist_ok"){
 						alertify.success("亲,添加用户成功！"); 
 						window.setTimeout("window.location='index.php?mod=admin&act=getUserList'",1000);
 					} else if($.trim(msg) 	== "uval_is_exist"){

@@ -7,7 +7,7 @@
 }
 
 .category_more_div a:hover {
-	color: red;
+	color: #cd0001;
 }
 
 .image_more_div a:link {
@@ -19,7 +19,7 @@
 }
 
 .image_more_div a:hover {
-	color: red;
+	color: #cd0001;
 }
 
 .sign_div {
@@ -44,9 +44,9 @@
 .topline_item_div .topline_title_div {
 	margin-bottom: 10px;
 	width: 100%;
-	font-family: "黑体";
+/* 	font-family: "黑体"; */
 	font-size: 22px;
-	font-weight: bold;
+/* 	font-weight: bold; */
 	float: left;
 }
 
@@ -100,7 +100,7 @@
 	width: 18px;
 	height: 19px;
 	font-size: 13px;
-	font-weight: bold;
+/* 	font-weight: bold; */
 	text-align: center;
 	margin-right: 10px;
 	border-style: solid;
@@ -132,14 +132,26 @@
 }
 
 .search_div .search_button_div {
-	background-image: url("../../img/frontimg/button.png");	
-	margin-top: 30px;
-	width: 60px;
-	height: 23px;
-	padding-top: 7px;
-	text-align: center;
-	font-size: 13px;
-	float: right;
+	display:inline-block;
+	float:right;
+	height:25px;
+	border-radius:4px;
+	width:60px;
+	background:#c4c4c4;
+	padding-top: 5px;
+	border:none;
+	cursor:pointer;
+	margin-top:30px;
+	border-bottom:3px solid #b4b4b4;*border-bottom:none;
+	color:#000000;
+	font-size:16px;padding:0 10px;*width:140px;
+	text-align:center;outline:none;font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
+}
+
+.search_div .search_button_div:hover{
+	background:#8b8b8b;
+	border-bottom:3px solid #727272;*border-bottom:none;
+	color: #ffffff;
 }
 
 .category_div {
@@ -162,8 +174,8 @@
 .category_item_div .category_name_div {
 	margin-bottom: 6px;
 	font-size: 24px;
-	font-family: "黑体";
-	font-weight: bold;
+/* 	font-family: "黑体"; */
+/* 	font-weight: bold; */
 	float: left;
 }
 
@@ -207,14 +219,25 @@
 .category_item_div .category_article_div .category_article_item_div {
 	width: 100%;
 	float: left;
+	margin-bottom: 8px;
+	border-bottom-style: groove;
+	border-bottom-width: thin;
+	border-bottom-color: rgba(245, 245, 245, 0.15);
+}
+
+.category_item_div .category_article_div .category_article_item_div:HOVER {
+	width: 100%;
+	float: left;
+	margin-bottom: 8px;
+	background-color: #f8f8f8;
 }
 
 .category_item_div .category_article_div .category_article_item_div .category_article_title_div{
 	margin-bottom: 12px;
 	width: 100%;
-	font-family: "黑体";
-	font-size: 22px;
-	font-weight: bold;
+/* 	font-family: "黑体"; */
+	font-size: 19px;
+/* 	font-weight: bold; */
 	float: left;
 }
 
@@ -223,6 +246,7 @@
 	width: 100%;
 	font-size: 13px;
 	float: left;
+	color: #AEAAAA;
 }
 
 .image_div {
@@ -239,8 +263,8 @@
 .image_div .image_name_div {
 	color: red;
 	font-size: 24px;
-	font-family: "黑体";
-	font-weight: bold;
+/* 	font-family: "黑体"; */
+/* 	font-weight: bold; */
 	float: left;
 }
 

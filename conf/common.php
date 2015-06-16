@@ -32,7 +32,6 @@ return  array(
 	'NOT_AUTH_NODE' 	 => 'public-userLogin,public-login,public-logout,public-regist,article-index,article-column,user-userCheck,user-userRegist,public-getCode,public-getParam,admin-adminLogin,admin-login,article-detail,article-search,article-picture',	// 默认无需认证模块
 	'ADMIN_AUTH_NODE'	 => 'admin-getUserList,admin-addUser,article-getChildColumn,column-index,column-add,article-getColumn,admin-rePassw,article-getArticle,admin-updateUser,comment-admincom,article-getCheckArticle,count-index',
 	'USER_AUTH_NODE'	 => 'user-person,comment-commin',
-	//用户、权限、岗位表配置
 	'TABLE_USER_INFO'			=>'news_user',
 	'TABLE_USER_ARTICLE_INFO'	=>'news_user_article',
 	'TABLE_USER_COMMENT_INFO'	=>'news_user_comment',

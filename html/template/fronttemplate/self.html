@@ -28,33 +28,33 @@
 				cssPath : './public/kindeditor/plugins/code/prettify.css',
 				uploadJson : './public/kindeditor/php/upload_json.php',
 				fileManagerJson : './public/kindeditor/php/file_manager_json.php',
-				allowFileManager : true,
+				allowFileManager : false,
 			});
 			prettyPrint();
 		});
 
 function comdel(comid,articleid){
-	if (confirm("确定要删除吗?")) {
-		$.post("index.php?mod=comment&act=icomdel",
-				  {
-				    "commentId": comid,
-				    "articleId": articleid,
-				  },
-				  function(data){
-					  if ($.trim(data) == "success") {
-						  var trId = "#com_" + comid;
-						  $(trId).remove();
-					  }else {
-						  alert($.trim(data));
-					}
-		});
-	}
+	alertify.confirm("真的要删除吗?",function(e){
+		if(e) {
+			$.post("index.php?mod=comment&act=icomdel",
+					  {
+					    "commentId": comid,
+					    "articleId": articleid,
+					  },
+					  function(data){
+						  if ($.trim(data) == "success") {
+							  alertify.success("成功删除一条评论");
+							  setTimeout('location.href=location.href',1000);
+						  } else {
+							  alertify.error($.trim(data));
+						  }
+			});
+		}
+	});
 }
 </script>	
-
-</script>
 </head>
-<body>
+<body style="background-color: #FAFAD4;">
 <script type="text/javascript" src="./public/js/alertify.js"></script>
 	<div class="head_page_div">
 	<div class="page_div">
@@ -140,7 +140,7 @@ function comdel(comid,articleid){
 					<span id="tips-renewpassw" class="regist_errortip_span"></span>
 				</div>
 				<div class="line">
-					<input class = "my_button" type = "button" value = "保存" id="revise-btn"/>
+					<input class = "my_button" type = "button" value = "保    存" id="revise-btn"/>
 				</div>
 			</div>
 			<!-- end of dis1-->
@@ -167,7 +167,7 @@ function comdel(comid,articleid){
 					<span id="tips-telephone" class="regist_errortip_span"></span>
 				</div>
 				<div class="line">
-					<input class = "my_button" type = "button" value = "保存" id="personInfo_btn"/>
+					<input class = "my_button" type = "button" value = "保  存" id="personInfo_btn"/>
 				</div>
 			</div>
 			<!--end of dis2 -->
@@ -186,7 +186,7 @@ function comdel(comid,articleid){
 				</div>
 				
 				<div class="line2">
-					<input class = "my_button" type = "submit" value = "上传" id="headpho_btn"/>
+					<input class = "my_button" type = "submit" value = "上   传" id="headpho_btn"/>
 					<input type="hidden" class="msg_err" id="photo_err" value="{$photo_err}" />
 				</div>
 			</div>
@@ -256,7 +256,7 @@ function comdel(comid,articleid){
 						</span>
 					</div>
 					<div class="line">
-						<input class = "my_b_button" type = "submit" value = "投递" id="uparticle-btn"/>
+						<input class = "my_b_button" type = "submit" value = "投         递" id="uparticle-btn"/>
 						<input type="hidden" class="msg_err" id="picture_err" value="{$picture_err}" >
 					</div>
 					</form>

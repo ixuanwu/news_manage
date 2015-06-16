@@ -2,8 +2,6 @@
 /**
  * 类名：UserAct
  * 功能：获取用户的信息（用户登录，修改，显示信息）
- * 版本：1.0
- * 日期：2014-11-25
  * 作者：蒋和超
  */
 
@@ -123,6 +121,9 @@ class UserAct {
 		$ip			= getClientIP();		/*获取客户端IP地址*/
 		$username	= post_check(trim($_POST['username']));
 		$password 	= post_check(trim($_POST['password']));
+		if(strtolower($_SESSION['CODE_NUM']) !=  strtolower($_POST['code'])){
+			return 'code_error';
+		}
 		$password	= self::operPassword($password);
 		$res		= UserModel::mod_userLogin($username, $password, $ip);
 		if($res == false){

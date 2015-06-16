@@ -36,7 +36,7 @@
 
 		delay   = 5000;
 		keys    = { ENTER: 13, ESC: 27 };
-		labels  = { ok: "OK", cancel: "Cancel" };
+		labels  = { ok: "确认", cancel: "取消" };
 		queue   = [];
 		isopen  = false;
 

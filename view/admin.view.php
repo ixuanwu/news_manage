@@ -2,8 +2,6 @@
 /**
  * 	类名：AdminView	
  *	功能：用户管理相关视图
- *	版本：1.0
- *	日期：2014-9-28
  *	作者：蒋和超
  **/
 class AdminView extends BaseView{

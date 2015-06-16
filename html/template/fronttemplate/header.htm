@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>新闻管理系统</title>
-<script type="text/javascript" src="./public/js/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="./public/js/frontjs/header.js"></script>
 <script type="text/javascript" src="./public/js/checkjs/userlogin.js"></script>
 <script type="text/javascript" src="./public/js/localtime.js"></script>
 <script type="text/javascript" src="./public/js/checkjs/adduser.js"></script>
 <link href="./public/css/frontcss/header.css" rel="stylesheet" type="text/css" />
+<link href="./public/css/frontcss/login.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./public/js/alertify.js"></script>
 <link href="./public/css/alertify.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="./favicon.ico" />
@@ -17,9 +17,7 @@ $(function(){
 	document.onkeydown = function(e){ 
 		var ev = document.all ? window.event : e;
 		if(ev.keyCode==13) {
-		
 			if($(".loginregist_div").css("display")=="block"){
-				
 				if($("#login_panel").css("display")=="block"){
 					$("#login-btn").click();
 				}

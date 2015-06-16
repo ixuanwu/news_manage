@@ -1,7 +1,3 @@
-/*个人中心JS
-作者：李金彦
-日期：2014-09-27
-*/
 //隐藏个人中心右边版块
 function hideDiv(oldId) {
 	oldId.css("display", "none");

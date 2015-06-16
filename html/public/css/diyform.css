@@ -31,14 +31,15 @@
 	font-family:"Hiragino Sans GB", "Microsoft Yahei";
 }
 .div_form{
-	border-style:solid;
+	border-style:groove;
 	border-width:2px;
 	margin:auto;
 	margin-top:15px;
 	border-radius:5px;
 	width:600px;
 	text-align:center;
-	box-shadow: #666 0px 0px 10px;background: #f5ffc6;
+	box-shadow: #666 0px 0px 10px;
+	background: #F9F9E0;
 	-webkit-box-shadow: #666 0px 0px 10px;
 	-moz-box-shadow: #666 0px 0px 10px;
 }
